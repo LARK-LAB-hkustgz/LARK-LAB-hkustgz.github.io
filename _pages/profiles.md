@@ -32,6 +32,9 @@ profiles:
     - name: "Haochen Wang"
       image: haochen.jpg
       more_info: "BS Xiamen University (Prev. DeepSeek AI; ByteDance Research; ETH Zurich, Spring 2026)"
+    - name: "Qingsong Lyu"
+      image: qingsong.jpg
+      more_info: "MS Tsinghua University (Prev. Ant Group, Fall 2026)"
     - name: "Mengyi Deng"
       image: mengyi.jpg
       more_info: "(Co-supervise with Prof. Wei Wang): MS Hong Kong University of Science and Technology (Guangzhou) (Fall 2024)"
