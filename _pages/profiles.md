@@ -35,6 +35,9 @@ profiles:
     - name: "Qingsong Lyu"
       image: qingsong.jpg
       more_info: "MS Tsinghua University (Prev. Ant Group, Fall 2026)"
+    - name: "Yilong Xu"
+      image: yilong.jpg
+      more_info: "MS Chinese Academy of Sciences (Prev. Alibaba, Fall 2026)"
     - name: "Zhuang Yu"
       image: yuzhuang.jpg
       more_info: "MS Shanghai Jiao Tong University (Prev. Huawei, Fall 2026)"
