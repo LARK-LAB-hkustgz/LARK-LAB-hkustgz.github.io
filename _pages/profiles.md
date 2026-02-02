@@ -35,6 +35,9 @@ profiles:
     - name: "Qingsong Lyu"
       image: qingsong.jpg
       more_info: "MS Tsinghua University (Prev. Ant Group, Fall 2026)"
+    - name: "Zhuang Yu"
+      image: yuzhuang.jpg
+      more_info: "MS Shanghai Jiao Tong University (Prev. Huawei, Fall 2026)"
     - name: "Mengyi Deng"
       image: mengyi.jpg
       more_info: "(Co-supervise with Prof. Wei Wang): MS Hong Kong University of Science and Technology (Guangzhou) (Fall 2024)"
