@@ -32,6 +32,7 @@ profiles:
     - name: "Haocheng Wang"
       image: haochen.jpg
       more_info: "BS Xiamen University (Prev. DeepSeek AI; ByteDance Research; ETH Zurich, Spring 2026)"
+      link: "https://haocheng.wang/"
     - name: "Qingsong Lyu"
       image: qingsong.jpg
       more_info: "MS Tsinghua University (Prev. Ant Group, Fall 2026)"
