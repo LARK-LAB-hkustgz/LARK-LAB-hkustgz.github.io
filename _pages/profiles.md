@@ -29,7 +29,7 @@ profiles:
       image: minrui.jpg
       more_info: "BS Hong Kong University of Science and Technology (Prev. MSRA, Spring 2026)"
       link: "https://rolandminrui.github.io/rolandminrui-homepage/"  # 示例链接
-    - name: "Haochen Wang"
+    - name: "Haocheng Wang"
       image: haochen.jpg
       more_info: "BS Xiamen University (Prev. DeepSeek AI; ByteDance Research; ETH Zurich, Spring 2026)"
     - name: "Qingsong Lyu"
