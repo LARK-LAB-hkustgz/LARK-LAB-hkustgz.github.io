@@ -55,7 +55,7 @@ profiles:
     - name: "Zilin Wang"
       image: zilin.jpg
       more_info: "BS Harbin Institute of Technology (Shenzhen) (Fall 2025)"
-      link: "#"
+      link: "https://terr1blec.github.io/"
     - name: "Chao Chen"
       image: chenchao.jpg
       more_info: "BS Shanghai Jiao Tong University (Fall 2025)"
