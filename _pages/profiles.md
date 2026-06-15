@@ -45,6 +45,7 @@ profiles:
     - name: "Mengyi Deng"
       image: mengyi.jpg
       more_info: "(Co-supervise with Prof. Wei Wang): MS Hong Kong University of Science and Technology (Guangzhou) (Fall 2024)"
+      link: "https://demi-deng2.github.io/"
     - name: "Yingping Wang"
       image: yingping.jpg
       more_info: "(Co-supervise with Prof. Jiayi Huang): MS Shenzhen University (Spring 2025)"
