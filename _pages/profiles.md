@@ -43,7 +43,7 @@ profiles:
       image: yuzhuang.jpg
       more_info: "MS Shanghai Jiao Tong University (Prev. Huawei, Fall 2026)"
     - name: "Mengyi Deng"
-      image: mengyi.jpg
+      image: mengyi.png
       more_info: "(Co-supervise with Prof. Wei Wang): MS Hong Kong University of Science and Technology (Guangzhou) (Fall 2024)"
     - name: "Yingping Wang"
       image: yingping.jpg
