@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /about/
-subtitle: <strong>LARK LAB</strong> (LAnguage Reasoning & Knowledge) <br> <a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc.
+subtitle: <strong>LARK LAB</strong> (Language Agent Reasoning & Knowledge) <br> <a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc.
 
 profile:
   align: right
