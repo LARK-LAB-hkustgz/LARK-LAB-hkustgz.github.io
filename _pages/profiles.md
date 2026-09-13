@@ -77,6 +77,10 @@ profiles:
       image: chenyu.jpg
       more_info: "(Co-supervise with Prof. Jiayi Huang): BS HIT (Fall 2025)"
       link: "https://chenyuy001.github.io/"
+    - name: "Haiying Xu"
+      image: haiying.jpg
+      more_info: "BS NKU (Prev. Shanghai AI Lab, Fall 2026)"
+      link: "https://cyborvirtue.github.io/"
     - name: "Hangyu Ran"
       image: hangyu.jpg
       more_info: "BS CSU (Prev. Ant Group Ming, Fall 2026)"
