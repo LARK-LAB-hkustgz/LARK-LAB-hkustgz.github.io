@@ -1,0 +1,540 @@
+---
+---
+
+% Source: https://github.com/Cartus/cartus.github.io/blob/fa0a365e26c2ab138f5e9c2fd4758a44d365ab27/_bibliography/papers.bib
+% Imported on 2026-09-28 in source order (newest first).
+% Includes OptiBench Meets ReSocratic (ICLR 2025) and all entries above it.
+
+@inproceedings{li2026sas,
+  abbr={NeurIPS},
+  title={SAS: Simple Attention Sparsification via End-to-End Optimization of Context Ranking},
+  author={Zhiwei Li* and Lei Zhu* and Hao Gu and Xiang Hu and Yan Wang and Haitao Mi and Sirui Han and Leo Liang and Zhijiang Guo},
+  booktitle={NeurIPS},
+  year={2026},
+  html = {https://arxiv.org/abs/2609.13141},
+  code = {https://github.com/Tencent-Hunyuan/Simple-Attention-Sparsification},
+  selected = {true},
+  preview = {SAS.png},
+  annotation = {* denotes Equal Contribution.}
+}
+
+@inproceedings{zhu2026codescaler,
+  abbr={NeurIPS},
+  title={CodeScaler: Scaling Code LLM Training and Test-Time Inference via Reward Models},
+  author={Xiao Zhu* and Xinyu Zhou* and Boyu Zhu and Hanxu Hu and Mingzhe Du and Haotian Zhang and Huiming Wang† and Zhijiang Guo†},
+  booktitle={NeurIPS},
+  year={2026},
+  html = {https://arxiv.org/abs/2602.17684},
+  code = {https://github.com/LARK-AI-Lab/CodeScaler},
+  website = {https://lark-ai-lab.github.io/codescaler.github.io/},
+  selected = {true},
+  preview = {CodeScaler.png},
+  annotation = {* denotes Equal Contribution. † denotes Corresponding Author.},
+  abstract = {Reinforcement Learning from Verifiable Rewards (RLVR) has driven recent progress in code large language models by leveraging execution-based feedback from unit tests, but its scalability is fundamentally constrained by the availability and reliability of high-quality test cases. We propose CodeScaler, a reward model designed to scale both reinforcement learning training and test-time inference for code generation. CodeScaler is trained on carefully curated preference data derived from verified code problems and incorporates syntax-aware code extraction and validity-preserving reward shaping to ensure stable and robust optimization. Across four coding benchmarks, CodeScaler consistently outperforms execution-based RL by +1.55 points on Qwen3-8B-Base and +4.23 points on Qwen3-14B-Base. By further scaling to 44K problems with additional synthetic data, CodeScaler yields +14.64 points improvement over the base model without requiring any test cases. At inference time, CodeScaler serves as an effective test-time scaling method, achieving performance comparable to unit test approaches while providing a 10-fold reduction in latency. Moreover, CodeScaler surpasses existing reward models on RM-Bench not only in the code domain (+3.3 points), but also in general and reasoning domains (+2.7 points on average).}
+}
+
+@inproceedings{kwok2026tabalign,
+  abbr={NeurIPS},
+  title={From Table to Cell: Attention for Better Reasoning with TABALIGN},
+  author={Tung Sum Thomas Kwok and Zeyong Zhang and Xinyu Wang and Chunhe Wang and Xiaofeng Lin and Hanwei Wu and Lei Ding and Guang Cheng and Zhijiang Guo†},
+  booktitle={NeurIPS},
+  year={2026},
+  html = {https://arxiv.org/abs/2605.14465},
+  selected = {false},
+  preview = {TabAlign.png},
+  annotation = {† denotes Corresponding Author.},
+  abstract = {Multi-step LLM reasoning over structured tables fails because planning and execution share no explicit cell-grounding contract. Existing methods constrain the planner to a left-to-right factorization at odds with table permutation invariance, and score intermediate states by generated content alone, overlooking cell grounding. We conduct a pilot study showing that diffusion language models (DLMs) produce more human-aligned and permutation-stable cell attention on tables than autoregressive models, with a 40.2\% median reduction in attention-AUROC variability under row reordering. Motivated by this, we propose TABALIGN, a planned table reasoning framework that operationalizes the contract. TABALIGN pairs a masked DLM planner, whose bidirectional denoising emits plan steps as binary cell masks, with TABATTN, a lightweight verifier trained on 1,600 human-verified attention standards to score each step by its attention overlap with the plan-designated mask. Across eight benchmarks covering table question answering and fact verification, TABALIGN improves average accuracy by 15.76 percentage points over the strongest open-source baseline at comparable 8B-class scale, with a matched-backbone ablation attributing 2.87 percentage points of this gain to the DLM planner over an AR planner on a fixed reasoner. Cleaner DLM plans also accelerate downstream reasoning execution by 44.64\%.}
+}
+
+@inproceedings{zhou2026qk,
+  abbr={EMNLP},
+  title={Attention Amnesia in Hybrid LLMs: When CoT Fine-Tuning Breaks Long-Range Recall, and How to Fix It},
+  author={Xinyu Zhou* and Boyu Zhu* and Yi Xu and Zhiwei Li and Yingfa Chen and Huiming Wang† and Zhijiang Guo†},
+  booktitle={EMNLP},
+  year={2026},
+  html       = {https://arxiv.org/pdf/2606.11052},
+  code       = {https://github.com/LARK-AI-Lab/QK-Restore},
+  selected   = {true},
+  preview = {QK.png},
+  annotation   = {* denotes Equal Contribution. † denotes Corresponding Author.},
+  abstract = {Chain-of-thought (CoT) supervised fine-tuning (SFT) is widely adopted to improve reasoning ability, yet we find that it systematically degrades long-context recall in hybrid linear-attention models. Across architectures including HypeNet and Jet-Nemotron, retrieval performance on Needle-In-A-Haystack (NIAH) deteriorates substantially after CoT-SFT, and the degradation becomes more severe under harder retrieval settings and longer context windows. For example, HypeNet-9B on NIAH-S2@256K decreases from 67.2% to 9.4%. We attribute this to CoT-SFT biasing attention gradients toward short-range patterns, disrupting query-key projections (WQ,WK) that are responsible for long-range routing. Motivated by this observation, we propose QK-Restore, a training-free method that restores only WQ and WK from the pre-SFT checkpoint while preserving all other post-SFT parameters. We further introduce a Procrustes variant to balance routing preservation and reasoning adaptation. Across architectures, QK-Restore consistently restores long-context capability at zero training cost while preserving reasoning performance; for instance, on HypeNet-5B it improves S3@256K from 65.4% to 76.4% while maintaining strong reasoning performance.}
+}
+
+@inproceedings{deng2026reskill,
+  abbr={EMNLP},
+  title={ReSkill: Explicit Failure Attribution and Structured Repair for Interactive Language Agents},
+  author={Mengyi Deng and Xin Li and Duyi Pan and Zilin Wang and Zhiwei Li and Zhijiang Guo† and Wei Wang†},
+  booktitle={EMNLP},
+  year={2026},
+  html       = {https://arxiv.org/html/2609.15684},
+  selected   = {false},
+  preview = {ReSkill.png},
+  annotation   = {* denotes Equal Contribution. † denotes Corresponding Author.},
+  abstract = {Language agents increasingly rely on reusable skills, but post-failure repair is often handled by opaque one-shot reflection: a model generates a skill patch without explicitly maintaining how failure explanations relate to candidate repairs or how unsuccessful retests should influence later edits. We introduce RESKILL, a structured repair framework that maintains an explicit repair state across repair rounds. Given a failed rollout, the framework links failure hypotheses to candidate skill patches, selects local repairs through coverage-based attribution, retests the edited skill set in the environment, and uses retest outcomes to guide subsequent repair updates. The language model supplies structured repair factors, while the repair procedure records them, compares local skill patches by how well they address active failure explanations, and carries unsuccessful retest outcomes into later repair rounds. We evaluate RESKILL on ALFWorld and TextCraft across three model sizes under fixed repair budgets. RESKILL obtains the strongest final success in all six benchmark–model settings, improving average final success by 3.7 percentage points over direct repair and 3.3 points over hypothesis-conditioned repair. These results suggest that explicit attribution alone is insufficient; durable improvement emerges when attribution is integrated with repair selection and persistent retest-conditioned update.}
+}
+
+@inproceedings{yang2026switch,
+  abbr={EMNLP},
+  title={Demystifying Hidden-State Recurrence: Switchable Latent Reasoning with On-Policy Reinforcement Learning},
+  author={Jiayu Yang* and Chao Chen* and Shengen Wu* and Yinhong Liu and Yuxuan Fan and Lujundong Li and Songning Lai and Chengwei Qin† and Zhijiang Guo†},
+  booktitle={Findings of EMNLP},
+  year={2026},
+  html       = {https://arxiv.org/pdf/2606.13106},
+  code       = {https://github.com/LARK-AI-Lab/SWITCH},
+  selected   = {false},
+  preview = {Switch.png},
+  annotation   = {* denotes Equal Contribution. † denotes Corresponding Author.},
+  abstract = {Latent chain-of-thought compresses reasoning by replacing visible reasoning traces with continuous hidden-state recurrence, but existing formulations are difficult to optimize with standard on-policy reinforcement learning (RL) and hard to interpret causally. Our key insight is that a single pair of explicit boundary tokens can address both issues at once: discrete entry and exit anchors make the latent block compatible with standard on-policy RL, and the same anchors offer a natural foothold for mechanistic analysis. Motivated by this, we propose SWITCH, a switchable latent reasoning framework. The model emits <swi> to enter latent mode and </swi> to exit. Because the boundaries are ordinary discrete tokens, the GRPO policy ratio is well-defined at every decision point. The same anchors also expose the latent steps to direct probing and causal intervention. We train the model with a visible-to-latent curriculum and a Switch-GRPO objective that propagates gradients through recurrent latent computation. SWITCH consistently outperforms prior hidden-state-recurrence latent reasoning approaches at similar scale. Mechanistic analysis through the boundary tokens further reveals three findings: (i) <swi> is a sharply localised, learned switching policy rather than a stylistic artefact; (ii) the latent step it opens performs problem-specific, causally important computation rather than acting as an inert placeholder; and (iii) that computation is concentrated at a single hidden-state transition on entry. Together, these results show that hidden-state-recurrence latent reasoning is both RL-trainable and open to direct mechanistic analysis, including of how on-policy RL itself improves the model from the inside.}
+}
+
+@inproceedings{Teng2026skpo,
+  abbr={EMNLP},
+  title={Skip-Connected Policy Optimization for Implicit Advantage},
+  author={Fengwei Teng* and Jinyi Bai* and Xinhao Yao and Demi Ruohan Wang and Jiahao Zhao and Zhijiang Guo},
+  booktitle={Findings of EMNLP},
+  year={2026},
+  html       = {https://arxiv.org/pdf/2604.08690},
+  selected   = {false},
+  preview = {SKPO.png},
+  annotation   = {* denotes Equal Contribution. † denotes Corresponding Author.},
+  abstract = {Group Relative Policy Optimization (GRPO) has proven effective in RLVR by using outcome-based rewards. While fine-grained dense rewards can theoretically improve performance, we reveal that under practical sampling budgets, Monte Carlo estimation yields high-variance and sign-inconsistent advantages for early reasoning tokens, paradoxically underperforming outcome-only GRPO. We propose Skip-Connected Optimization (SKPO), which decomposes reasoning into upstream and downstream phases: upstream receives dense rewards from downstream Monte Carlo sampling with single-stream optimization; downstream maintains group-relative optimization, where a skip connection concatenates the upstream segment with the original problem, enabling the model to leverage helpful upstream reasoning while preserving the freedom to bypass flawed reasoning through direct problem access. Experiments demonstrate improvements of 3.91% and 6.17% relative gains over the strongest baselines on Qwen2.5-Math-7B and Llama-3.2-3B respectively across mathematical benchmarks and out-of-domain tasks including general reasoning and code generation. Further analysis reveals an implicit advantage: SKPO generates trajectories with higher intermediate-step quality even when matched for final correctness.}
+}
+
+@inproceedings{Wang2026FormalRx,
+  abbr={ICML},
+  title={FormalRx: Rectify and eXamine Semantic Failures in Autoformalization},
+  author={Haocheng Wang* and Baiyu Huang* and Yingjia Wan* and Xiao Zhu and Xiaoyang Liu and Yinya Huang† and Zhijiang Guo†},
+  booktitle={ICML},
+  year={2026},
+  html       = {https://arxiv.org/pdf/2607.04655},
+  code       = {https://lark-ai-lab.github.io/formalrx/},
+  selected   = {false},
+  preview = {FormalRx.png},
+  annotation   = {* denotes Equal Contribution. † denotes Corresponding Author.},
+  abstract = {The veracious semantic alignment in autoformalization is significant for formal mathematical reasoning. However, existing evaluations provide only opaque binary verdicts or scalar scores, offering no interpretable insight into where or why translations fail. This opacity severely limits both human understanding and automated system improvement. To bridge this gap, we introduce FormalRx, a comprehensive diagnostic evaluation framework that transforms autoformalization assessment from black-box judgments into actionable feedback. At its core is SCI Error Taxonomy, a hierarchical classification scheme decomposing autoformalization errors into 28 distinct categories with strict priority ordering. Building on this taxonomy, FormalRx provides four critical diagnostic capabilities: alignment verdicts, error categorization, error localization, and correction. We instantiate the framework with a diagnostic model FormalRx-8B, trained on 56,287 NL-FL pairs with fine-grained diagnostic annotations, and release FormalRx-Test as the first fine-grained diagnostic benchmark. FormalRx-8B achieves F1-scores of 0.88 (verdict) and 0.71 (categorization), along with accuracies of 0.75 (localization) and 0.73 (correction), substantially outperforming both general-purpose LLMs and specialized baselines. By connecting evaluation with actionable insights, FormalRx enables systematic diagnosis and improvement of autoformalization systems.}
+}
+
+@inproceedings{Wu2026SmartFed,
+  abbr={ICML},
+  title={Elastic Mixture of Rank-Wise Experts for Knowledge Reuse in Federated Fine-Tuning},
+  author={Yebo Wu and Jingguang Li and Zhijiang Guo† and Li Li†},
+  booktitle={ICML (Spotlight)},
+  year={2026},
+  html       = {https://arxiv.org/pdf/2512.00902},
+  selected   = {false},
+  preview = {SmartFed.png},
+  annotation   = {* denotes Equal Contribution. † denotes Corresponding Author.},
+  abstract = {Federated fine-tuning offers a promising solution for adapting Large Language Models (LLMs) to downstream tasks while safeguarding data privacy. However, its high computational and communication demands hinder its deployment on resource-constrained devices. In this paper, we propose SmartFed, a resource-efficient federated fine-tuning framework. SmartFed intelligently reuses knowledge embedded in existing LoRA modules, eliminating the need for expensive training from scratch when adapting LLMs to new tasks. To effectively exploit this knowledge and ensure scalability, we introduce the Mixture of Rank-Wise Experts (MoRE). MoRE decomposes LoRA modules into fine-grained rank-level experts. These experts are selectively activated and combined based on input semantics and resource budgets. Moreover, to optimize resource utilization, we present the Elastic Expert Quota Allocation (EEQA). EEQA adaptively allocates expert capacity across parameter matrices based on their contribution to model performance, focusing computing resources on the critical experts. Extensive evaluations across multiple benchmarks demonstrate that SmartFed significantly outperforms existing methods in model performance and training efficiency.}
+}
+
+@inproceedings{Deng2026Clarify,
+  abbr={ICML},
+  title={Uncertainty-Aware Clarification in LLM Agents with Information Gain},
+  author={Mengyi Deng and Zhiwei Li and Xin Li and Tingyu Zhu and Ying Zhao and Zhijiang Guo† and Wei Wang†},
+  booktitle={ICML},
+  year={2026},
+  html       = {https://arxiv.org/pdf/2606.03135},
+  code       = {https://github.com/Demi-deng2/IG-clarifier},
+  selected   = {true},
+  preview = {Clarifier.png},
+  annotation   = {* denotes Equal Contribution. † denotes Corresponding Author.},
+  abstract = {Large Language Model (LLM) agents often operate under underspecified user instructions, where latent uncertainty over user intent leads to erroneous tool actions. To address this challenge, we propose a goal-oriented clarification framework that aligns clarification behavior with ambiguity resolution. Central to our approach is the Information Gain Reward, a metric that quantifies the utility of clarification questions by measuring the Bayesian belief update towards the ground-truth goal induced by the clarification exchange. We train the clarifier (LLM) using this reward to optimize for high information gain, ensuring that clarifications effectively reduce uncertainty and improve task completion within the agent-tool-user environment. We validate our framework within a clarification-enhanced -Bench environment, conducting cross-agent evaluations across five heterogeneous backbones. Empirical results demonstrate that our method consistently improves the success rate by 3.7\% over the no-clarification baseline, while adding only 0.3 total interaction steps on average.}
+}
+
+@inproceedings{Yang206Accordian,
+  abbr={ICML},
+  title={Accordion-Thinking: Self-Regulated Step Summaries for Efficient and Readable LLM Reasoning},
+  author={Zhicheng Yang and Zhijiang Guo and Yinya Huang and Yongxin Wang and Wenlei Shi and Yiwei Wang and Xiaodan Liang and Jing Tang},
+  booktitle={ICML},
+  year={2026},
+  html       = {https://arxiv.org/pdf/2602.03249},
+  code       = {https://github.com/yangzhch6/Accordion-Thinking},
+  selected   = {true},
+  preview = {Accordion.png},
+  abstract = {Scaling test-time compute via long Chain-ofThought unlocks remarkable gains in reasoning capabilities, yet it faces practical limits due to the linear growth of KV cache and quadratic attention complexity. In this paper, we introduce Accordion-Thinking, an end-to-end framework where LLMs learn to self-regulate the granularity of the reasoning steps through dynamic summarization. This mechanism enables a Fold inference mode, where the model periodically summarizes its thought process and discards former thoughts to reduce dependency on historical tokens. We apply reinforcement learning to incentivize this capability further, uncovering a critical insight: the accuracy gap between the highly efficient Fold mode and the exhaustive Unfold mode progressively narrows and eventually vanishes over the course of training. This phenomenon demonstrates that the model learns to encode essential reasoning information into compact summaries, achieving effective compression of the reasoning context. Our Accordion-Thinker demonstrates that with learned self-compression, LLMs can tackle complex reasoning tasks with minimal dependency token overhead without compromising solution quality, and it achieves a 3x throughput while maintaining accuracy on a 48GB GPU memory configuration, while the structured step summaries provide a human-readable account of the reasoning process.}
+}
+
+@inproceedings{Yang2025DARS,
+  abbr={ICML},
+  title={Depth-Breadth Synergy in RLVR: Unlocking LLM Reasoning Gains with Adaptive Exploration},
+  author={Zhicheng Yang and Zhijiang Guo and Yinya Huang and Yongxin Wang and Dongchun Xie and Yiwei Wang and Xiaodan Liang and Jing Tang},
+  booktitle={ICML},
+  year={2026},
+  html       = {https://arxiv.org/pdf/2508.13755},
+  code       = {https://github.com/yangzhch6/DARS},
+  selected   = {true},
+  preview = {DARS.png},
+  abstract = {Reinforcement Learning with Verifiable Reward (RLVR) has emerged as a powerful paradigm for unlocking reasoning capabilities in large language models, yet its full potential is hindered by two under-explored dimensions: Depth-the hardest problem a model can sample; Breadth-the number of instances consumed in a single iteration. We dissect the popular GRPO algorithm and reveal a systematic bias: the cumulative-advantage disproportionately weights samples with medium accuracy, while down-weighting the low-accuracy instances that are crucial for pushing reasoning boundaries. To rectify the depth neglect, we introduce Difficulty Adaptive Rollout Sampling (DARS), which re-weights hard problems through targeted multi-stage rollouts, thereby increasing the number of positive rollouts for hard problems. Empirically, naively enlarging rollout size only accelerates convergence and even hurts Pass@K. Our DARS, in contrast, delivers consistent Pass@K gains without extra inference cost at convergence. Just as we adaptively expanded the depth of exploration, we now ask whether aggressively scaling the breadth of training data can further amplify reasoning gains. To this end, we intensely scale batch size and replace PPO's mini-batch iterations with full-batch updates over multiple epochs. Increasing breadth significantly enhances Pass@1 performance. Large-breadth training sustains high token-level entropy, indicating continued exploration and reduced gradient noise. We further present DARS-B, which augments DARS with large breadth, and demonstrate simultaneous gains in Pass@K and Pass@1. The results confirm that breadth and adaptive exploration across depth operate as orthogonal dimensions in RLVR, which are key to unleashing the reasoning power of RLVR.}
+}
+
+@inproceedings{Liang2025SvS,
+  abbr={ICLR},
+  title={Beyond Pass@1: Self-Play with Variational Problem Synthesis Sustains RLVR},
+  author={Xiao Liang* and Zhong-Zhi Li* and Yeyun Gong† and Yelong Shen and Ying Nian Wu and Zhijiang Guo† and Weizhu Chen†},
+  booktitle={ICLR},
+  year={2026},
+  html       = {https://arxiv.org/pdf/2508.14029v1},
+  code       = {https://github.com/MasterVito/SvS},
+  selected   = {true},
+  preview = {SvS.png},
+  annotation   = {* denotes Equal Contribution. † denotes Corresponding Author.},
+  abstract = {Reinforcement Learning with Verifiable Rewards (RLVR) has recently emerged as a key paradigm for post-training Large Language Models (LLMs), particularly for complex reasoning tasks. However, vanilla RLVR training has been shown to improve Pass@1 performance at the expense of policy entropy, leading to reduced generation diversity and limiting the Pass@k performance, which typically represents the upper bound of LLM reasoning capability. In this paper, we systematically analyze the policy's generation diversity from the perspective of training problems and find that augmenting and updating training problems helps mitigate entropy collapse during training. Based on these observations, we propose an online Self-play with Variational problem Synthesis (SvS) strategy for RLVR training, which uses the policy's correct solutions to synthesize variational problems while ensuring their reference answers remain identical to the originals. This self-improving strategy effectively maintains policy entropy during training and substantially improves Pass@k compared with standard RLVR, sustaining prolonged improvements and achieving absolute gains of 18.3% and 22.8% in Pass@32 performance on the competition-level AIME24 and AIME25 benchmarks. Experiments on 12 reasoning benchmarks across varying model sizes from 3B to 32B consistently demonstrate the generalizability and robustness of SvS.}
+}
+
+@inproceedings{YangACE2026,
+  abbr={ICLR},
+  title={ACE: Attribution-Controlled Knowledge Editing for Multi-hop Factual Recall},
+  author={Jiayu Yang* and Yuxuan Fan* and Songning Lai and Shengen Wu and Jiaqi Tang and Chun Kang and Zhijiang Guo† and Yutao Yue†},
+  booktitle    = {ICLR},
+  year={2026},
+  html       = {https://arxiv.org/pdf/2510.07896?},
+  code       = {https://github.com/yjywdzh/ACE},
+  selected   = {false},
+  preview = {ACE.png},
+  annotation   = {* denotes Equal Contribution. † denotes Corresponding Author.},
+  abstract = {Large Language Models (LLMs) require efficient knowledge editing (KE) to update factual information, yet existing methods exhibit significant performance decay in multi-hop factual recall. This failure is particularly acute when edits involve intermediate implicit subjects within reasoning chains. Through causal analysis, we reveal that this limitation stems from an oversight of how chained knowledge is dynamically represented and utilized at the neuron level. We discover that during multi hop reasoning, implicit subjects function as query neurons, which sequentially activate corresponding value neurons across transformer layers to accumulate information toward the final answer, a dynamic prior KE work has overlooked. Guided by this insight, we propose ACE: Attribution-Controlled Knowledge Editing for Multi-hop Factual Recall, a framework that leverages neuron-level attribution to identify and edit these critical query-value (Q-V) pathways. ACE provides a mechanistically grounded solution for multi-hop KE, empirically outperforming state-of-the-art methods by 9.44% on GPT-J and 37.46% on Qwen3-8B. Our analysis further reveals more fine-grained activation patterns in Qwen3 and demonstrates that the semantic interpretability of value neurons is orchestrated by query-driven accumulation. These findings establish a new pathway for advancing KE capabilities based on the principled understanding of internal reasoning mechanisms.}
+}
+
+@inproceedings{WuDevFT2026,
+  abbr={ICLR},
+  title={Learning Like Humans: Resource-Efficient Federated Fine-Tuning through Cognitive Developmental Stages},
+  author={Yebo Wu* and Jingguang Li* and Zhijiang Guo† and Li Li†},
+  booktitle    = {ICLR},
+  year={2026},
+  html       = {https://arxiv.org/pdf/2508.00041},
+  selected   = {false},
+  preview = {DevFT.png},
+  annotation   = {* denotes Equal Contribution. † denotes Corresponding Author.},
+  abstract = {Federated fine-tuning enables Large Language Models (LLMs) to adapt to downstream tasks while preserving data privacy, but its resource-intensive nature limits deployment on edge devices. In this paper, we introduce Developmental Federated Tuning (DevFT), a resource-efficient approach inspired by cognitive development that progressively builds a powerful LLM from a compact foundation. DevFT decomposes the fine-tuning process into developmental stages, each optimizing submodels with increasing parameter capacity. Knowledge from earlier stages transfers to subsequent submodels, providing optimized initialization parameters that prevent convergence to local minima and accelerate training. This paradigm mirrors human learning, gradually constructing comprehensive knowledge structure while refining existing skills. To efficiently build stage-specific submodels, DevFT introduces deconfliction-guided layer grouping and differential-based layer fusion to distill essential information and construct representative layers. Evaluations across multiple benchmarks demonstrate that DevFT significantly outperforms state-of-the-art methods, achieving up to 4.59 faster convergence, 10.67 reduction in communication overhead, and 9.07% average performance improvement, while maintaining compatibility with existing approaches.}
+}
+
+@inproceedings{Zhou26Time,
+  abbr={ICLR},
+  title={When Silence Is Golden: Can LLMs Learn to Abstain in Temporal QA and Beyond?},
+  author={Xinyu Zhou and Chang Jin and Carsten Eickhoff and Zhijiang Guo and Seyed Ali Bahrainian},
+  booktitle={ICLR},
+  year={2026},
+  html       = {https://arxiv.org/pdf/2602.04755},
+  code       = {https://github.com/Blackzxy/AbstentionTemporalQA},
+  selected   = {false},
+  preview = {TimeRL.png},
+  abstract = {Large language models (LLMs) rarely admit uncertainty, often producing fluent but misleading answers, rather than abstaining (i.e., refusing to answer). This weakness is even evident in temporal question answering, where models frequently ignore time-sensitive evidence and conflate facts across different time-periods. In this paper, we present the first empirical study of training LLMs with an abstention ability while reasoning about temporal QA. Existing approaches such as calibration might be unreliable in capturing uncertainty in complex reasoning. We instead frame abstention as a teachable skill and introduce a pipeline that couples Chain-of-Thought (CoT) supervision with Reinforcement Learning (RL) guided by abstention-aware rewards. Our goal is to systematically analyze how different information types and training techniques affect temporal reasoning with abstention behavior in LLMs. Through extensive experiments studying various methods, we find that RL yields strong empirical gains on reasoning: a model initialized by Qwen2.5-1.5B-Instruct surpasses GPT-4o by  and  in Exact Match on TimeQA-Easy and Hard, respectively. Moreover, it improves the True Positive rate on unanswerable questions by  over a pure supervised fine-tuned (SFT) variant. Beyond performance, our analysis shows that SFT induces overconfidence and harms reliability, while RL improves prediction accuracy but exhibits similar risks. Finally, by comparing implicit reasoning cues (e.g., original context, temporal sub-context, knowledge graphs) with explicit CoT supervision, we find that implicit information provides limited benefit for reasoning with abstention. Our study provides new insights into how abstention and reasoning can be jointly optimized, providing a foundation for building more reliable LLMs.}
+}
+
+@inproceedings{Xu2025Swing,
+  abbr={ICLR},
+  title={SwingArena: Competitive Programming Arena for Long-context GitHub Issue Solving},
+  author={Wendong Xu and Jing Xiong and Chenyang Zhao and Qiujiang Chen and Haoran Wang and Hui Shen and Zhongwei Wan and Jianbo Dai and Taiqiang Wu and He Xiao and Chaofan Tao and Z. Morley Mao and Ying Sheng and Zhijiang Guo and Hongxia Yang and Bei Yu and Lingpeng Kong and Quanquan Gu and Ngai Wong},
+  booktitle={ICLR (Oral)},
+  year={2026},
+  html       = {https://arxiv.org/pdf/2505.23932},
+  code       = {https://swing-bench.github.io/},
+  selected   = {false},
+  preview = {Swing.png},
+  abstract = {We present SwingArena, a competitive evaluation framework for Large Language Models (LLMs) that closely mirrors real-world software development workflows. Unlike traditional static benchmarks, SwingArena models the collaborative process of software iteration by pairing LLMs as submitters, who generate patches, and reviewers, who create test cases and verify the patches through continuous integration (CI) pipelines. To support these interactive evaluations, we introduce a retrieval-augmented code generation (RACG) module that efficiently handles long-context challenges by providing syntactically and semantically relevant code snippets from large codebases, supporting multiple programming languages (C++, Python, Rust, and Go). This enables the framework to scale across diverse tasks and contexts while respecting token limitations. Our experiments, using over 400 high-quality real-world GitHub issues selected from a pool of 2,300 issues, show that models like GPT-4o excel at aggressive patch generation, whereas DeepSeek and Gemini prioritize correctness in CI validation. SwingArena presents a scalable and extensible methodology for evaluating LLMs in realistic, CI-driven software development settings. More details are available on our project page: swing-bench.github.io}
+}
+
+@inproceedings{Li2025TLDR,
+  abbr={ACL},
+  title={TL; DR: Too Long, Do Re-weighting for Effcient LLM Reasoning Compression},
+  author={Zhong-Zhi Li* and Xiao Liang* and Zihao Tang and Lei Ji and Peijie Wang and Haotian Xu and Haizhen Huang and Weiwei Deng and Ying Nian Wu and Yeyun Gong and Zhijiang Guo† and Xiao Liu† and Fei Yin and Cheng-Lin Liu},
+  booktitle={ACL},
+  year={2026},
+  html       = {https://arxiv.org/pdf/2506.02678},
+  code       = {https://github.com/zzli2022/TLDR},
+  selected   = {false},
+  preview = {TLDR.png},
+  annotation   = {* denotes Equal Contribution. † denotes Corresponding Author.},
+  abstract = {Large Language Models (LLMs) have recently achieved remarkable progress by leveraging Reinforcement Learning and extended Chain-of-Thought (CoT) techniques. However, the challenge of performing efficient language reasoning--especially during inference with extremely long outputs--has drawn increasing attention from the research community. In this work, we propose a dynamic ratio-based training pipeline that does not rely on sophisticated data annotations or interpolation between multiple models. We continuously balance the weights between the model's System-1 and System-2 data to eliminate redundant reasoning processes while preserving the model's reasoning capability. We validate our approach across models on DeepSeek-R1-Distill-7B and DeepSeek-R1-Distill-14B and on a diverse set of benchmarks with varying difficulty levels. Our method significantly reduces the number of output tokens by nearly 40% while maintaining the accuracy of the reasoning. Our code and data will be available soon.}
+}
+
+@inproceedings{WuChainFed2026,
+  abbr={ACL},
+  title={Beyond End-to-End: Dynamic Chain Optimization for Private LLM Adaptation on the Edge},
+  author={Yebo Wu and Jingguang Li and Chunlin Tian and Kahou Tam and Zhijiang Guo† and Li Li†},
+  booktitle={ACL},
+  year={2026},
+  html       = {https://arxiv.org/pdf/2604.06819},
+  selected   = {false},
+  preview = {ChainFed.png},
+  annotation   = {* denotes Equal Contribution. † denotes Corresponding Author.},
+  abstract = {Federated fine-tuning enables privacy-preserving LLM adaptation but faces a critical bottleneck: the disparity between LLMs' high memory demands and edge devices' limited capacity. To break the memory barrier, we propose Chain Federated Fine-Tuning (ChainFed), an innovative paradigm that forgoes end-to-end updates in favor of a sequential, layer-by-layer manner. It first trains the initial adapter to convergence, freezes its weights, and then proceeds to the next. This iterative train-and-freeze process forms an optimization chain, gradually enhancing the model's task-specific proficiency. ChainFed further integrates three core techniques: 1) Dynamic Layer Co-Tuning to bridge semantic gaps between sequentially tuned layers and facilitate information flow; 2) Globally Perceptive Optimization to endow each adapter with foresight beyond its local objective; 3) Function-Oriented Adaptive Tuning to automatically identify the optimal fine-tuning starting point. Extensive experiments on multiple benchmarks demonstrate the superiority of ChainFed over existing methods, boosting average accuracy by up to 46.46\%.}
+}
+
+@inproceedings{Deng2026DGPO,
+  abbr={ACL},
+  title={DGPO: Beyond Pairwise Preferences with Directional Consistent Groupwise Optimization},
+  author={Mengyi Deng and Zhiwei Li and Xin Li and Tingyu Zhu and Yulan Yuan and Zhijiang Guo† and Wei Wang†},
+  booktitle={Findings of ACL},
+  year={2026},
+  html       = {https://arxiv.org/pdf/2605.10863},
+  selected   = {false},
+  preview = {DGPO.png},
+  annotation   = {* denotes Equal Contribution. † denotes Corresponding Author.},
+  abstract = {Although Large Language Models (LLMs) have made remarkable progress, current preference optimization methods still struggle to align directional consistency while preserving reasoning diversity. To address this limitation, we propose Directional-Groupwise Preference Optimization (DGPO), a lightweight framework that aggregates supervision signals at the group level and explicitly models direction-aware alignment through multi-candidate comparisons. DGPO organizes forward and reverse question-answer instances into structured sets and optimizes a margin-based likelihood objective that separates coherent reasoning paths from inconsistent alternatives. This group-wise formulation captures richer relative information than pairwise objectives and reinforces consistency across diverse reasoning pathways. Empirical results show that our constructed reverse data yields a 3.2% average improvement across five benchmarks, while DGPO further delivers consistent gains across multiple datasets and model families, achieving average accuracy improvements of up to 3.6%.}
+}
+
+@inproceedings{Wu2026DaiD,
+  abbr={ACL},
+  title={Spotlight and Shadow: Attention-Guided Dual-Anchor Introspective Decoding for MLLM Hallucination Mitigation},
+  author={Yebo Wu and Han Jin and Zhijiang Guo† and Li Li†},
+  booktitle={Findings of ACL},
+  year={2026},
+  html       = {https://arxiv.org/pdf/2604.10071},
+  selected   = {false},
+  preview = {DaiD.png},
+  annotation   = {* denotes Equal Contribution. † denotes Corresponding Author.},
+  abstract = {Multimodal Large Language Models (MLLMs) have demonstrated remarkable reasoning capabilities yet continue to suffer from hallucination, where generated text contradicts visual content. In this paper, we introduce Dual-Anchor Introspective Decoding (DaID), a novel contrastive decoding framework that dynamically calibrates each token generation by mining the model's internal perceptual discrepancies. Specifically, DaID identifies a Spotlight layer to amplify visual factual signals and a Shadow layer to suppress textual inertia. By leveraging visual attention distributions to guide this dual-anchor selection process, our method ensures precise, token-specific adaptation. Experimental results across multiple benchmarks and MLLMs demonstrate that DaID significantly mitigates hallucination while enhancing general reasoning capabilities.}
+}
+
+@inproceedings{Li2025System2,
+  abbr={TPAMI},
+  title={From System 1 to System 2: A Survey of Reasoning Large Language Models},
+  author={Zhong-Zhi Li* and Duzhen Zhang* and Ming-Liang Zhang and Jiaxin Zhang and Zengyan Liu and Yuxuan Yao and Haotian Xu and Junhao Zheng and Pei-Jie Wang and Xiuyi Chen and Yingying Zhang and Fei Yin and Jiahua Dong and Zhiwei Li and Bao-Long Bi and Ling-Rui Mei and Junfeng Fang and Xiao Liang and Zhijiang Guo† and Le Song† and Cheng-Lin Liu†},
+  booktitle={TPAMI},
+  year={2026},
+  html       = {https://arxiv.org/pdf/2502.17419},
+  code       = {https://github.com/zzli2022/Awesome-System2-Reasoning-LLM},
+  selected   = {false},
+  preview = {System2.png},
+  annotation   = {* denotes Equal Contribution. † denotes Corresponding Author.},
+  abstract = {Achieving human-level intelligence requires refining the transition from the fast, intuitive System 1 to the slower, more deliberate System 2 reasoning. While System 1 excels in quick, heuristic decisions, System 2 relies on logical reasoning for more accurate judgments and reduced biases. Foundational Large Language Models (LLMs) excel at fast decision-making but lack the depth for complex reasoning, as they have not yet fully embraced the step-by-step analysis characteristic of true System 2 thinking. Recently, reasoning LLMs like OpenAI's o1/o3 and DeepSeek's R1 have demonstrated expert-level performance in fields such as mathematics and coding, closely mimicking the deliberate reasoning of System 2 and showcasing human-like cognitive abilities. This survey begins with a brief overview of the progress in foundational LLMs and the early development of System 2 technologies, exploring how their combination has paved the way for reasoning LLMs. Next, we discuss how to construct reasoning LLMs, analyzing their features, the core methods enabling advanced reasoning, and the evolution of various reasoning LLMs. Additionally, we provide an overview of reasoning benchmarks, offering an in-depth comparison of the performance of representative reasoning LLMs. Finally, we explore promising directions for advancing reasoning LLMs and maintain a real-time \href{this https URL}{GitHub Repository} to track the latest developments. We hope this survey will serve as a valuable resource to inspire innovation and drive progress in this rapidly evolving field.}
+}
+
+@inproceedings{Wu2026Survey,
+  abbr={TMLR},
+  title={A Survey on Federated Fine-Tuning of Large Language Models},
+  author={Yebo Wu and Chunlin Tian and Jingguang Li and He Sun and Kahou Tam and Zhanting Zhou and Haicheng Liao and Zhijiang Guo† and Li Li† and Chengzhong Xu},
+  booktitle={TMLR},
+  year={2026},
+  html       = {https://arxiv.org/pdf/2503.12016},
+  code       = {https://github.com/Clin0212/Awesome-Federated-LLM-Learning},
+  selected   = {false},
+  preview = {FedSurvey.png},
+  annotation   = {* denotes Equal Contribution. † denotes Corresponding Author.},
+  abstract = {Large Language Models (LLMs) have demonstrated impressive success across various tasks. Integrating LLMs with Federated Learning (FL), a paradigm known as FedLLM, offers a promising avenue for collaborative model adaptation while preserving data privacy. This survey provides a systematic and comprehensive review of FedLLM. We begin by tracing the historical development of both LLMs and FL, summarizing relevant prior research to set the context. Subsequently, we delve into an in-depth analysis of the fundamental challenges inherent in deploying FedLLM. Addressing these challenges often requires efficient adaptation strategies; therefore, we conduct an extensive examination of existing Parameter-Efficient Fine-tuning (PEFT) methods and explore their applicability within the FL framework. To rigorously evaluate the performance of FedLLM, we undertake a thorough review of existing fine-tuning datasets and evaluation benchmarks. Furthermore, we discuss FedLLM's diverse real-world applications across multiple domains. Finally, we identify critical open challenges and outline promising research directions to foster future advancements in FedLLM. This survey aims to serve as a foundational resource for researchers and practitioners, offering valuable insights into the rapidly evolving landscape of federated fine-tuning for LLMs. It also establishes a roadmap for future innovations in privacy-preserving AI. We actively maintain a GitHub repo \href{this https URL}{this https URL} to track cutting-edge advancements in this field.}
+}
+
+@inproceedings{Xu2024DebateQAEQ,
+  abbr={EACL},
+  title={DebateQA: Evaluating Question Answering on Debatable Knowledge},
+  author={Rongwu Xu* and Xuan Qi* and Zehan Qi and Wei Xu and Zhijiang Guo},
+  booktitle={Findings of EACL},
+  year={2026},
+  html       = {https://arxiv.org/pdf/2408.01419},
+  code       = {https://github.com/pillowsofwind/DebateQA},
+  selected   = {false},
+  preview = {DebateQA.png},
+  annotation   = {* denotes Equal Contribution. † denotes Corresponding Author.},
+  abstract = {The rise of large language models (LLMs) has enabled us to seek answers to inherently debatable questions on LLM chatbots, necessitating a reliable way to evaluate their ability. However, traditional QA benchmarks assume fixed answers are inadequate for this purpose. To address this, we introduce DebateQA, a dataset of 2,941 debatable questions, each accompanied by multiple human-annotated partial answers that capture a variety of perspectives. We develop two metrics: Perspective Diversity, which evaluates the comprehensiveness of perspectives, and Dispute Awareness, which assesses if the LLM acknowledges the question's debatable nature. Experiments demonstrate that both metrics align with human preferences and are stable across different underlying models. Using DebateQA with two metrics, we assess 12 popular LLMs and retrieval-augmented generation methods. Our findings reveal that while LLMs generally excel at recognizing debatable issues, their ability to provide comprehensive answers encompassing diverse perspectives varies considerably.}
+}
+
+@inproceedings{Yang2025treerpo,
+  abbr={ArXiv},
+  title={TreeRPO: Tree Relative Policy Optimization},
+  author={Yang, Zhicheng and Guo, Zhijiang and Huang, Yinya and Liang, Xiaodan and Wang, Yiwei and Tang, Jing},
+  booktitle={ArXiv},
+  year={2025},
+  html       = {https://arxiv.org/pdf/2506.05183},
+  code       = {https://github.com/yangzhch6/TreeRPO},
+  selected   = {false},
+  preview = {TreeRPO.png},
+  abstract = {Large Language Models (LLMs) have shown remarkable reasoning capabilities through Reinforcement Learning with Verifiable Rewards (RLVR) methods. However, a key limitation of existing approaches is that rewards defined at the full trajectory level provide insufficient guidance for optimizing the intermediate steps of a reasoning process. To address this, we introduce \textbf{\name}, a novel method that estimates the mathematical expectations of rewards at various reasoning steps using tree sampling. Unlike prior methods that rely on a separate step reward model, \name directly estimates these rewards through this sampling process. Building on the group-relative reward training mechanism of GRPO, \name innovatively computes rewards based on step-level groups generated during tree sampling. This advancement allows \name to produce fine-grained and dense reward signals, significantly enhancing the learning process and overall performance of LLMs. Experimental results demonstrate that our \name algorithm substantially improves the average Pass@1 accuracy of Qwen-2.5-Math on test benchmarks, increasing it from 19.0\% to 35.5\%. Furthermore, \name significantly outperforms GRPO by 2.9\% in performance while simultaneously reducing the average response length by 18.1\%, showcasing its effectiveness and efficiency. Our code will be available at \href{https://github.com/yangzhch6/TreeRPO}{https://github.com/yangzhch6/TreeRPO}.}
+}
+
+@inproceedings{Teng2025aot,
+  abbr={NeurIPS},
+  title={Atom of Thoughts for Markov LLM Test-Time Scaling},
+  author={Fengwei Teng and Quan Shi and Zhaoyang Yu and Jiayi Zhang and Yuyu Luo and Chenglin Wu† and Zhijiang Guo†},
+  booktitle={NeurIPS},
+  year={2025},
+  html       = {https://arxiv.org/pdf/2502.12018},
+  code       = {https://github.com/qixucen/atom},
+  selected   = {false},
+  preview = {AoT.png},
+  annotation   = {* denotes Equal Contribution. † denotes Corresponding Author.},
+  abstract = {Large Language Models (LLMs) achieve superior performance through training-time scaling, and test-time scaling further enhances their capabilities by conducting effective reasoning during inference. However, as the scale of reasoning increases, existing test-time scaling methods suffer from accumulated historical information, which not only wastes computational resources but also interferes with effective reasoning. To address this issue, we observe that complex reasoning can be achieved by solving a series of independent and self-contained subquestions. These subquestions are essentially \textit{atomic questions}, exhibiting the memoryless property similar to Markov processes. Based on this observation, we propose Atom of Thoughts (\our), where each state transition consists of decomposing the current question into a dependency-based directed acyclic graph and contracting its subquestions, forming a simplified question that maintains answer equivalence with the original problem. This answer preservation enables the iterative \textit{decomposition-contraction} process to naturally form a meaningful Markov reasoning process. Furthermore, these atomic states can be seamlessly integrated into existing test-time scaling methods, enabling \our to serve as a plug-in enhancement for improving reasoning capabilities. Experiments across six benchmarks demonstrate the effectiveness of \our both as a standalone framework and a plug-in enhancement. Notably, on HotpotQA, when applied to gpt-4o-mini, \our achieves an \textbf{80.6\%} F1 score, surpassing o3-mini by \textbf{3.4\%} and DeepSeek-R1 by \textbf{10.6\%}.}
+}
+
+@inproceedings{Qing2025effibenchx,
+  abbr={NeurIPS},
+  title={EFFIBENCH-X: A Multi-Language Benchmark for Measuring Efficiency of LLM-Generated Code},
+  author={Yuhao Qing* and Boyu Zhu* and Mingzhe Du* and Zhijiang Guo† and Terry Yue Zhuo and Qianru Zhang and Jie M Zhang and Heming Cui and Siu-Ming Yiu and Dong Huang† and See-Kiong Ng and Luu Anh Tuan},
+  booktitle={NeurIPS},
+  year={2025},
+  html       = {https://arxiv.org/pdf/2505.13004},
+  code       = {https://github.com/EffiBench/EffiBench-X},
+  selected   = {false},
+  preview = {EffiBenchX.png},
+  annotation   = {* denotes Equal Contribution. † denotes Corresponding Author.},
+  abstract = {Existing code generation benchmarks primarily evaluate functional correctness, with limited focus on code efficiency and often restricted to a single language like Python. To address this gap, we introduce EffiBench-X, the first multi-language benchmark designed to measure the efficiency of LLM-generated code. EffiBench-X supports Python, C++, Java, JavaScript, Ruby, and Golang. It comprises competitive programming tasks with human-expert solutions as efficiency baselines. Evaluating state-of-the-art LLMs on EffiBench-X reveals that while models generate functionally correct code, they consistently underperform human experts in efficiency. Even the most efficient LLM-generated solutions (Qwen3-32B) achieve only around \textbf{62\%} of human efficiency on average, with significant language-specific variations. LLMs show better efficiency in Python, Ruby, and JavaScript than in Java, C++, and Golang. For instance, DeepSeek-R1's Python code is significantly more efficient than its Java code. These results highlight the critical need for research into LLM optimization techniques to improve code efficiency across diverse languages. The dataset and evaluation infrastructure are submitted and available at https://github.com/EffiBench/EffiBench-X.git and https://huggingface.co/datasets/EffiBench/effibench-x.}
+}
+
+@inproceedings{Cao2025averimatec,
+  abbr={NeurIPS},
+  title={AVERIMATEC: A Dataset for Automatic Verification of Image-Text Claims with Evidence from the Web},
+  author={Rui Cao and Zifeng Ding and Zhijiang Guo and Michael Schlichtkrull and Andreas Vlachos},
+  booktitle={NeurIPS},
+  year={2025},
+  html       = {https://arxiv.org/pdf/2505.17978},
+  selected   = {false},
+  preview = {AVerImaTec.png},
+  abstract = {Textual claims are often accompanied by images to enhance their credibility and spread on social media and but this also raises concerns about the spread of misinformation. Existing datasets for automated verification of image-text claims remain limited and as they often consist of synthetic claims and lack evidence annotations to capture the reasoning behind the verdict. In this work and we introduce AVerImaTeC and a dataset consisting of 1,297 real-world image-text claims. Each claim is annotated with question-answer (QA) pairs containing evidence from the web and reflecting a decomposed reasoning regarding the verdict. We mitigate common challenges in fact-checking datasets such as contextual dependence and temporal leakage and and evidence insufficiency and via claim normalization and temporally constrained evidence annotation and and a two-stage sufficiency check. We assess the consistency of the annotation in AVerImaTeC via inter-annotator studies and achieving a \kappa=0.742 on verdicts and 74.7\% consistency on QA pairs. We also propose a novel evaluation method for evidence retrieval and conduct extensive experiments to establish baselines for verifying image-text claims using open-web evidence.}
+}
+
+@inproceedings{yao2025activation,
+  abbr={NeurIPS},
+  title={Activation-Guided Consensus Merging for Large Language Models},
+  author={Yao, Yuxuan and Liu, Shuqi and Liu, Zehua and Li, Qintong and Liu, Mingyang and Han, Xiongwei and Guo, Zhijiang and Wu, Han and Song, Linqi},
+  booktitle={NeurIPS},
+  year={2025},
+  html       = {https://arxiv.org/pdf/2505.14009},
+  selected   = {false},
+  preview = {ACM.png},
+  abstract = {Recent research has increasingly focused on reconciling the reasoning capabilities of System 2 with the efficiency of System 1. While existing training-based and prompt-based approaches face significant challenges in terms of efficiency and stability, model merging emerges as a promising strategy to integrate the diverse capabilities of different Large Language Models (LLMs) into a unified model. However, conventional model merging methods often assume uniform importance across layers, overlooking the functional heterogeneity inherent in neural components. To address this limitation, we propose \textbf{A}ctivation-Guided \textbf{C}onsensus \textbf{M}erging (\textbf{ACM}), a plug-and-play merging framework that determines layer-specific merging coefficients based on mutual information between activations of pre-trained and fine-tuned models. ACM effectively preserves task-specific capabilities without requiring gradient computations or additional training. Extensive experiments on Long-to-Short (L2S) and general merging tasks demonstrate that ACM consistently outperforms all baseline methods. For instance, in the case of Qwen-7B models, TIES-Merging equipped with ACM achieves a \textbf{55.3\%} reduction in response length while simultaneously improving reasoning accuracy by \textbf{1.3} points.}
+}
+
+@inproceedings{wei2025time,
+  abbr={NeurIPS},
+  title={TIME: A Multi-level Benchmark for Temporal Reasoning of LLMs in Real-World Scenarios},
+  author={Shaohang Wei and Wei Li and Feifan Song and Wen Luo and  Tianyi Zhuang and Haochen Tan and Zhijiang Guo and Houfeng Wang},
+  booktitle={NeurIPS (Spotlight)},
+  year={2025},
+  html       = {https://arxiv.org/pdf/2505.12891},
+  code       = {https://huggingface.co/datasets/SylvainWei/TIME},
+  selected   = {false},
+  preview = {Time.png},
+  abstract = {Temporal reasoning is pivotal for Large Language Models (LLMs) to comprehend the real world. However, existing works neglect the real-world challenges for temporal reasoning: (1) intensive temporal information, (2) fast-changing event dynamics, and (3) complex temporal dependencies in social interactions. To bridge this gap, we propose a multi-level benchmark TIME, designed for temporal reasoning in real-world scenarios. TIME consists of 38,522 QA pairs, covering 3 levels with 11 fine-grained sub-tasks. This benchmark encompasses 3 sub-datasets reflecting different real-world challenges: TIME-Wiki, TIME-News, and TIME-Dial. We conduct extensive experiments on reasoning models and non-reasoning models. And we conducted an in-depth analysis of temporal reasoning performance across diverse real-world scenarios and tasks, and summarized the impact of test-time scaling on temporal reasoning capabilities. Additionally, we release TIME-Lite, a human-annotated subset to foster future research and standardized evaluation in temporal reasoning.}
+}
+
+@inproceedings{WanFast2025,
+  abbr={EMNLP},
+  title={FaStFACT: Faster, Stronger Long-Form Factuality Evaluations in LLMs},
+  author={Yingjia Wan and Haochen Tan and Xiao Zhu and Xinyu Zhou and Zhiwei Li and Qingsong Lv and Changxuan Sun and Jiaqi Zeng and Yi Xu and Jianqiao Lu and Yinhong Liu† and Zhijiang Guo†},
+  booktitle={Findings of EMNLP},
+  year={2025},
+  html       = {https://arxiv.org/pdf/2510.12839},
+  code       = {https://github.com/Yingjia-Wan/FastFact},
+  selected   = {false},
+  preview = {FastFact.png},
+  annotation   = {* denotes Equal Contribution. † denotes Corresponding Author.},
+  abstract = {Evaluating the factuality of long-form generations from Large Language Models (LLMs) remains challenging due to accuracy issues and costly human assessment. Prior efforts attempt this by decomposing text into claims, searching for evidence, and verifying claims, but suffer from critical drawbacks: (1) inefficiency due to complex pipeline components unsuitable for long LLM outputs, and (2) ineffectiveness stemming from inaccurate claim sets and insufficient evidence collection of one-line snippets.To address these limitations, we propose \name, a fast and strong evaluation framework that achieves the highest alignment with human evaluation and efficiency among existing baselines. \name first employs chunk-level claim extraction integrated with confidence-based pre-verification, significantly reducing the cost of web searching and inference calling while ensuring reliability. For searching and verification, it collects document-level evidence from crawled webpages and selectively retrieves it during verification, addressing the evidence insufficiency problem in previous pipelines.Extensive experiments based on an aggregated and manually annotated benchmark demonstrate the reliability of \name in both efficiently and effectively evaluating the factuality of long-form LLM generations.}
+}
+
+@inproceedings{DengR1K2025,
+  abbr={EMNLP},
+  title={When Inverse Data Outperforms: Exploring the Pitfalls of Mixed Data in Multi-Stage Fine-Tuning},
+  author={Mengyi Deng and Xin Li and Tingyu Zhu and Zhicheng Yang and Zhijiang Guo† and Wei Wang†},
+  booktitle={Findings of EMNLP},
+  year={2025},
+  html       = {https://arxiv.org/pdf/2509.13079?},
+  code       = {https://github.com/16demi/ReasonAlign-analysis},
+  selected   = {false},
+  preview = {r1k.png},
+  annotation   = {* denotes Equal Contribution. † denotes Corresponding Author.},
+  abstract = {Existing work has shown that o1-level performance can be achieved with limited data distillation, but most existing methods focus on unidirectional supervised fine-tuning (SFT), overlooking the intricate interplay between diverse reasoning patterns. In this paper, we construct r1k, a high-quality reverse reasoning dataset derived by inverting 1,000 forward examples from s1k, and examine how SFT and Direct Preference Optimization (DPO) affect alignment under bidirectional reasoning objectives. SFT on r1k yields a 1.6%--6.8% accuracy improvement over s1k across evaluated benchmarks. However, naively mixing forward and reverse data during SFT weakens the directional distinction. Although DPO can partially recover this distinction, it also suppresses less preferred reasoning paths by shifting the probability mass toward irrelevant outputs. These findings suggest that mixed reasoning data introduce conflicting supervision signals, underscoring the need for robust and direction-aware alignment strategies.}
+}
+
+@inproceedings{Chang2025treereview,
+  abbr={EMNLP},
+  title={TreeReview: A Dynamic Tree of Questions Framework for Deep and Efficient LLM-based Scientific Peer Review},
+  author={Chang*, Yuan and Li*, Ziyue and Zhang†, Hengyuan and Kong, Yuanbo and Wu, Yanru and Guo†, Zhijiang and Wong†, Ngai},
+  booktitle={EMNLP},
+  year={2025},
+  html       = {https://arxiv.org/pdf/2506.07642},
+  code       = {https://github.com/YuanChang98/tree-review},
+  selected   = {false},
+  preview = {TreeReview.png},
+  annotation   = {* denotes Equal Contribution. † denotes Corresponding Author.},
+  abstract = {While Large Language Models (LLMs) have shown significant potential in assisting peer review, current methods often struggle to generate thorough and insightful reviews while maintaining efficiency. In this paper, we propose TreeReview, a novel framework that models paper review as a hierarchical and bidirectional question-answering process. TreeReview first constructs a tree of review questions by recursively decomposing high-level questions into fine-grained sub-questions and then resolves the question tree by iteratively aggregating answers from leaf to root to get the final review. Crucially, we incorporate a dynamic question expansion mechanism to enable deeper probing by generating follow-up questions when needed. We construct a benchmark derived from ICLR and NeurIPS venues to evaluate our method on full review generation and actionable feedback comments generation tasks. Experimental results of both LLM-based and human evaluation show that TreeReview outperforms strong baselines in providing comprehensive, in-depth, and expert-aligned review feedback, while reducing LLM token usage by up to 80% compared to computationally intensive approaches. Our code and benchmark dataset are available at https://github.com/YuanChang98/tree-review.}
+}
+
+@inproceedings{Su2025climateviz,
+  abbr={EMNLP},
+  title={ClimateViz: A Benchmark for Statistical Reasoning and Fact Verification on Scientific Charts},
+  author={Su, Ruiran and Si, Jiasheng and Guo, Zhijiang and Pierrehumbert, Janet B},
+  booktitle={EMNLP},
+  year={2025},
+  html       = {https://arxiv.org/pdf/2506.08700},
+  code       = {https://github.com/Albasu120491/ClimateViz},
+  selected   = {false},
+  preview = {ClimateViz.png},
+  abstract = {Scientific fact-checking has mostly focused on text and tables, overlooking scientific charts, which are key for presenting quantitative evidence and statistical reasoning. We introduce ClimateViz, the first large-scale benchmark for scientific fact-checking using expert-curated scientific charts. ClimateViz contains 49,862 claims linked to 2,896 visualizations, each labeled as support, refute, or not enough information. To improve interpretability, each example includes structured knowledge graph explanations covering trends, comparisons, and causal relations. We evaluate state-of-the-art multimodal language models, including both proprietary and open-source systems, in zero-shot and few-shot settings. Results show that current models struggle with chart-based reasoning: even the best systems, such as Gemini 2.5 and InternVL 2.5, reach only 76.2 to 77.8 percent accuracy in label-only settings, far below human performance (89.3 and 92.7 percent). Explanation-augmented outputs improve performance in some models. We released our dataset and code alongside the paper.}
+}
+
+@inproceedings{Xiong2024UNCompUL,
+  abbr={EMNLP},
+  title={UNComp: Uncertainty-Aware Long-Context Compressor for Efficient Large Language Model Inference},
+  author={Jing Xiong and Jianghan Shen and Fanghua Ye and Chaofan Tao and Zhongwei Wan and Jianqiao Lu and Xun Wu and Chuanyang Zheng and Zhijiang Guo and Lingpeng Kong and Ngai Wong},
+  booktitle={EMNLP},
+  year={2025},
+  html       = {https://arxiv.org/pdf/2410.03090},
+  selected   = {false},
+  preview = {UNComp.png},
+  abstract = {Deploying large language models (LLMs) is challenging due to their high memory and computational demands, especially during long-context inference. While key-value (KV) caching accelerates inference by reusing previously computed keys and values, it also introduces significant memory overhead. Existing KV cache compression methods such as eviction and merging typically compress the KV cache after it is generated and overlook the eviction of hidden states, failing to improve the speed of the prefilling stage. Additionally, applying a uniform compression rate across different attention heads can harm crucial retrieval heads in needle-in-a-haystack tasks due to excessive compression. In this paper, we propose UNComp, an uncertainty-aware compression scheme that leverages matrix entropy to estimate model uncertainty across layers and heads at the token sequence level. By grouping layers and heads based on their uncertainty, UNComp adaptively compresses both the hidden states and the KV cache. Our method achieves a 1.6x speedup in the prefilling stage and reduces the KV cache to 4.74% of its original size, resulting in a 6.4x increase in throughput and a 1.4x speedup in inference with only a 1.41% performance loss. Remarkably, in needle-in-a-haystack tasks, UNComp outperforms the full-size KV cache even when compressed to 9.38% of its original size. Our approach offers an efficient, training-free Grouped-Query Attention paradigm that can be seamlessly integrated into existing KV cache schemes.}
+}
+
+@inproceedings{Liu2024AligningWL,
+  abbr={ICML},
+  title={Aligning with Logic: Measuring, Evaluating and Improving Logical Consistency in Large Language Models},
+  author={Yinhong Liu and Zhijiang Guo and Tianya Liang and Ehsan Shareghi and Ivan Vuli'c and Nigel Collier},
+  booktitle={ICML (Spotlight)},
+  year={2025},
+  html       = {https://arxiv.org/pdf/2410.02205},
+  selected   = {true},
+  preview = {AlignLogic.png},
+  abstract = {Recent research in Large Language Models (LLMs) has shown promising progress related to LLM alignment with human preferences. LLM-empowered decision-making systems are expected to be predictable, reliable and trustworthy, which implies being free from paradoxes or contradictions that could undermine their credibility and validity. However, LLMs still exhibit inconsistent and biased behaviour when making decisions or judgements. In this work, we focus on studying logical consistency of LLMs as a prerequisite for more reliable and trustworthy systems. Logical consistency ensures that decisions are based on a stable and coherent understanding of the problem, reducing the risk of erratic or contradictory outputs. We first propose a universal framework to quantify the logical consistency via three fundamental proxies: transitivity, commutativity and negation invariance. We then evaluate logical consistency, using the defined measures, of a wide range of LLMs, demonstrating that it can serve as a strong proxy for overall robustness. Additionally, we introduce a data refinement and augmentation technique that enhances the logical consistency of LLMs without sacrificing alignment to human preferences. It augments noisy and sparse pairwise-comparison annotations by estimating a partially or totally ordered preference rankings using rank aggregation methods. Finally, we show that logical consistency impacts the performance of LLM-based logic-dependent algorithms, where LLMs serve as logical operators.}
+}
+
+@inproceedings{Huang2024EffiCodeUC,
+  abbr={ICML},
+  title={Effi-Code: Unleashing Code Efficiency in Language Models},
+  author={Dong Huang* and Guangtao Zeng* and Jianbo Dai and Meng Luo and Han Weng and Yuhao Qing and Heming Cui and Zhijiang Guo† and Jie M. Zhang},
+  booktitle={ICML},
+  year={2025},
+  html       = {https://arxiv.org/pdf/2410.10209},
+  code       = {https://github.com/huangd1999/Effi-Code},
+  selected   = {true},
+  preview = {EffiCode.png},
+  annotation   = {* denotes Equal Contribution. † denotes Corresponding Author.},
+  abstract = {As the use of large language models (LLMs) for code generation becomes more prevalent in software development, it is critical to enhance both the efficiency and correctness of the generated code. Existing methods and models primarily focus on the correctness of LLM-generated code, ignoring efficiency. In this work, we present Effi-Code, an approach to enhancing code generation in LLMs that can improve both efficiency and correctness. We introduce a Self-Optimization process based on Overhead Profiling that leverages open-source LLMs to generate a high-quality dataset of correct and efficient code samples. This dataset is then used to fine-tune various LLMs. Our method involves the iterative refinement of generated code, guided by runtime performance metrics and correctness checks. Extensive experiments demonstrate that models fine-tuned on the Effi-Code show significant improvements in both code correctness and efficiency across task types. For example, the pass@1 of DeepSeek-Coder-6.7B-Instruct generated code increases from \textbf{43.3\%} to \textbf{76.8\%}, and the average execution time for the same correct tasks decreases by \textbf{30.5\%}. Effi-Code offers a scalable and generalizable approach to improving code generation in AI systems, with potential applications in software development, algorithm design, and computational problem-solving. }
+}
+
+@inproceedings{Lu2024FormalAlignAA,
+  abbr={ICLR},
+  title={FormalAlign: Automated Alignment Evaluation for Autoformalization},
+  author={Jianqiao Lu* and Yingjia Wan* and Yinya Huang and Jing Xiong and Zhengying Liu and Zhijiang Guo†},
+  booktitle    = {ICLR},
+  year={2025},
+  html       = {https://arxiv.org/pdf/2410.10135},
+  code       = {https://github.com/rookie-joe/FormalAlign},
+  selected   = {false},
+  preview = {FormalAlign.png},
+  annotation   = {* denotes Equal Contribution. † denotes Corresponding Author.},
+  abstract = {Autoformalization aims to convert informal mathematical proofs into machine-verifiable formats, bridging the gap between natural and formal languages. However, ensuring semantic alignment between the informal and formalized statements remains challenging. Existing approaches heavily rely on manual verification, hindering scalability. To address this, we introduce \textsc{FormalAlign}, the first automated framework designed for evaluating the alignment between natural and formal languages in autoformalization. \textsc{FormalAlign} trains on both the autoformalization sequence generation task and the representational alignment between input and output, employing a dual loss that combines a pair of mutually enhancing autoformalization and alignment tasks. Evaluated across four benchmarks augmented by our proposed misalignment strategies, \textsc{FormalAlign} demonstrates superior performance. In our experiments, \textsc{FormalAlign} outperforms GPT-4, achieving an Alignment-Selection Score 11.58\% higher on \forml-Basic (99.21\% vs. 88.91\%) and 3.19\% higher on MiniF2F-Valid (66.39\% vs. 64.34\%). This effective alignment evaluation significantly reduces the need for manual verification.}
+}
+
+@inproceedings{Yao2024DetermineThenEnsembleNO,
+  abbr={ICLR},
+  title={Determine-Then-Ensemble: Necessity of Top-k Union for Large Language Model Ensembling},
+  author={Yuxuan Yao and Han Wu† and Mingyang Liu and Sichun Luo and Xiongwei Han and Jie Liu and Zhijiang Guo and Linqi Song†},
+  booktitle    = {ICLR (Spotlight)},
+  year={2025},
+  html       = {https://arxiv.org/pdf/2410.03777},
+  selected   = {false},
+  preview = {Unite.png},
+  abstract = {Large language models (LLMs) exhibit varying strengths and weaknesses across different tasks, prompting recent studies to explore the benefits of ensembling models to leverage their complementary advantages. However, existing LLM ensembling methods often overlook model compatibility and struggle with inefficient alignment of probabilities across the entire vocabulary. In this study, we empirically investigate the factors influencing ensemble performance, identifying model performance, vocabulary size, and response style as key determinants, revealing that compatibility among models is essential for effective ensembling. This analysis leads to the development of a simple yet effective model selection strategy that identifies compatible models. Additionally, we introduce the \textsc{Uni}on \textsc{T}op-k \textsc{E}nsembling (\textsc{UniTE}), a novel approach that efficiently combines models by focusing on the union of the top-k tokens from each model, thereby avoiding the need for full vocabulary alignment and reducing computational overhead. Extensive evaluations across multiple benchmarks demonstrate that \textsc{UniTE} significantly enhances performance compared to existing methods, offering a more efficient framework for LLM ensembling.}
+}
+
+@inproceedings{YANG2024OptiBenchMR,
+  abbr={ICLR},
+  title={OptiBench Meets ReSocratic: Measure and Improve LLMs for Optimization Modeling},
+  author={Zhicheng Yang and Yinya Huang and Zhijiang Guo and Wei Shi and Liang Feng and Linqi Song and Yiwei Wang and Xiaodan Liang and Jing Tang},
+  booktitle    = {ICLR},
+  year={2025},
+  html       = {https://arxiv.org/pdf/2407.09887v2},
+  code       = {https://github.com/yangzhch6/ReSocratic},
+  selected   = {false},
+  preview = {OptiBench.png},
+  abstract = {Large language models (LLMs) have exhibited their problem-solving abilities in mathematical reasoning. Solving realistic optimization (OPT) problems in application scenarios requires advanced and applied mathematics ability. However, current OPT benchmarks that merely solve linear programming are far from complex realistic situations. In this work, we propose OptiBench, a benchmark for End-to-end optimization problem-solving with human-readable inputs and outputs. OptiBench contains rich optimization problems, including linear and nonlinear programming with or without tabular data, which can comprehensively evaluate LLMs' solving ability. In our benchmark, LLMs are required to call a code solver to provide precise numerical answers. Furthermore, to alleviate the data scarcity for optimization problems, and to bridge the gap between open-source LLMs on a small scale (e.g., Llama-3-8b) and closed-source LLMs (e.g., GPT-4), we further propose a data synthesis method namely ReSocratic. Unlike general data synthesis methods that proceed from questions to answers, \ReSocratic first incrementally synthesizes formatted optimization demonstration with mathematical formulations step by step and then back-translates the generated demonstrations into questions. Based on this, we synthesize the ReSocratic-29k dataset. We further conduct supervised fine-tuning with ReSocratic-29k on multiple open-source models. Experimental results show that ReSocratic-29k significantly improves the performance of open-source models.}
+}
