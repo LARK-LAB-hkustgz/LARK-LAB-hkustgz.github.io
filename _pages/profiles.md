@@ -93,6 +93,10 @@ profiles:
       image: zehang.jpg
       more_info: "BS CUG (Prev. SenseTime, Fall 2026)"
       link: "#"
+    - name: "Shuangjie Fan"
+      image: shuangjie.jpg
+      more_info: "BS NEU (Fall 2026)"
+      link: "#"
   
   others:
     - name: "Langqi Liu"
