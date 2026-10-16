@@ -68,6 +68,9 @@
 {% endif %}
 <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url | bust_css_cache }}">
 <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
+{% for translation in page.translations %}
+  <link rel="alternate" hreflang="{{ translation.lang }}" href="{{ translation.url | absolute_url }}">
+{% endfor %}
 
 {% if site.enable_darkmode %}
   <!-- Dark Mode -->

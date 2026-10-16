@@ -1,0 +1,13 @@
+{% if page.translations.size > 1 %}
+  <nav class="blog-languages" aria-label="Article language">
+    {% for translation in page.translations %}
+      {% if translation.lang == page.lang %}
+        <span lang="{{ translation.lang }}" aria-current="page">{{ translation.label }}</span>
+      {% else %}
+        <a href="{{ translation.url | relative_url }}" lang="{{ translation.lang }}" hreflang="{{ translation.lang }}">
+          {{ translation.label }}
+        </a>
+      {% endif %}
+    {% endfor %}
+  </nav>
+{% endif %}

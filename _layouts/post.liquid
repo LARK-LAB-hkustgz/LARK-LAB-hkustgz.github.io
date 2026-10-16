@@ -13,8 +13,16 @@ layout: default
   </style>
 {% endif %}
 
-<div class="post">
+<div class="post{% if page.blog_post %} blog-article{% endif %}">
   <header class="post-header">
+    {% if page.blog_post %}
+      <p class="blog-back">
+        <a href="{{ '/blog/' | relative_url }}">
+          {%- if page.lang == 'zh-CN' %}&larr; 所有博客{% else %}&larr; All blogs{% endif -%}
+        </a>
+      </p>
+      {% include blog_languages.liquid %}
+    {% endif %}
     <h1 class="post-title">{{ page.title }}</h1>
     <p class="post-meta">
       Created on {{ page.date | date: '%B %d, %Y' }}
