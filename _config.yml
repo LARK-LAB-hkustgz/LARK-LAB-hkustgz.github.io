@@ -53,7 +53,7 @@ posts_in_search: true
 bib_search: true
 
 # Dimensions
-max_width: 930px
+max_width: 1200px
 
 # TODO: add layout settings (single page vs. multi-page)
 
@@ -85,14 +85,14 @@ bing_site_verification: # out your bing-site-verification ID (Bing Webmaster)
 # Blog
 # -----------------------------------------------------------------------------
 
-blog_name: al-folio # blog_name will be displayed in your blog page
-blog_description: a simple whitespace theme for academics
+blog_name: LARK LAB Blogs
+blog_description: Research notes and perspectives on language agents, reasoning, and knowledge.
 permalink: /blog/:year/:title/
 lsi: false # produce an index for related posts
 
 # Pagination
 pagination:
-  enabled: true
+  enabled: false # Enable together with a paginator-aware blog layout when needed.
 
 related_blog_posts:
   enabled: true
@@ -121,13 +121,7 @@ disqus_shortname: al-folio # put your disqus shortname
 # External sources.
 # If you have blog posts published on medium.com or other external sources,
 # you can display them in your blog by adding a link to the RSS feed.
-external_sources:
-  - name: medium.com
-    rss_url: https://medium.com/@al-folio/feed
-  - name: Google Blog
-    posts:
-      - url: https://blog.google/technology/ai/google-gemini-update-flash-ai-assistant-io-2024/
-        published_date: 2024-05-14
+external_sources: []
 
 # -----------------------------------------------------------------------------
 # Newsletter
@@ -172,6 +166,10 @@ kramdown:
 # Includes & excludes
 include: ["_pages", "_scripts"]
 exclude:
+  - BLOGGING.md
+  - "*.zip"
+  - _blog_examples/
+  - _templates/
   - bin/
   - CONTRIBUTING.md
   - CUSTOMIZE.md
@@ -218,6 +216,13 @@ plugins:
 # Sitemap settings
 defaults:
   - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      blog_post: true
+      lang: en
+  - scope:
       path: "assets"
     values:
       sitemap: false
@@ -255,8 +260,8 @@ jekyll-archives:
   books:
     enabled: [year, tags, categories] # enables year, tag and category archives (remove if you need to disable one of them).
 
-display_tags: ["formatting", "images", "links", "math", "code", "blockquotes"] # these tags will be displayed on the front page of your blog
-display_categories: ["external-services"] # these categories will be displayed on the front page of your blog
+display_tags: ["llm-agents", "tool-use", "evaluation"]
+display_categories: ["research"]
 
 # -----------------------------------------------------------------------------
 # Jekyll Scholar

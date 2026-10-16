@@ -9,6 +9,8 @@ on:
       - "assets/**"
       - "_sass/**"
       - "_scripts/**"
+      - "bin/check-blog.py"
+      - "requirements.txt"
       - "**.bib"
       - "**.html"
       - "**.js"
@@ -38,6 +40,8 @@ on:
       - "assets/**"
       - "_sass/**"
       - "_scripts/**"
+      - "bin/check-blog.py"
+      - "requirements.txt"
       - "**.bib"
       - "**.html"
       - "**.js"
@@ -91,9 +95,10 @@ jobs:
       - name: Install and Build 🔧
         run: |
           sudo apt-get update && sudo apt-get install -y imagemagick
-          pip3 install --upgrade nbconvert
+          pip3 install -r requirements.txt
           export JEKYLL_ENV=production
           bundle exec jekyll build
+          python3 bin/check-blog.py --site _site
       - name: Purge unused CSS 🧹
         run: |
           npm install -g purgecss

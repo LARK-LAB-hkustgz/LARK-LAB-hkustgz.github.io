@@ -1,5 +1,7 @@
 # al-folio
 
+> **LARK LAB 博客维护：** 新增文章、多语言版本、资源目录及发布检查请参阅 [BLOGGING.md](BLOGGING.md)。
+
 <div align="center">
 
 [![Preview](readme_preview/al-folio-preview.png)](https://alshedivat.github.io/al-folio/)
