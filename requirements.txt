@@ -1,2 +1,0 @@
-nbconvert
-PyYAML>=6,<7
