@@ -1,0 +1,7 @@
+<div class="diagram qk-diagram" role="img" aria-label="{{ project.diagram_alt }}">
+  <div class="diagram-heading"><span class="diagram-dot"></span> Restore routing. Retain adaptation.</div>
+  <div class="checkpoint-labels"><span>Pre-training</span><span>After CoT fine-tuning</span></div>
+  <div class="weight-transfer"><div class="weight-source"><span>Q</span><span>K</span><small>Original routing</small></div><div class="transfer-arrow">→<small>Restore</small></div><div class="weight-target"><span class="restored">Q</span><span class="restored">K</span><span>V</span><span>…</span><small>Keep all other weights</small></div></div>
+  <div class="qk-result"><div><span class="result-icon">↗</span><strong>Long-range recall</strong><small>Recovered</small></div><div><span class="result-icon">✓</span><strong>Reasoning ability</strong><small>Retained</small></div></div>
+  <div class="zero-training"><span>0</span> additional training steps</div>
+</div>

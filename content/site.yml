@@ -1,0 +1,16 @@
+name: LARK Lab
+full_name: Language Agent Reasoning & Knowledge Lab
+url: https://lark-lab-hkustgz.github.io
+affiliation: HKUST (Guangzhou)
+description: We study how language agents learn, reason, and use knowledge — building the foundations for capable and reliable AI.
+github: https://github.com/LARK-AI-Lab
+navigation:
+  - title: Research
+    path: /
+    key: research
+  - title: Publications
+    path: /publications/
+    key: publications
+  - title: Members
+    path: /members/
+    key: members
