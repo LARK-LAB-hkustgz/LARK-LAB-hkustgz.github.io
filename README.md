@@ -41,8 +41,8 @@ templates/
 assets/
   css/site.css            # 全站样式及响应式布局
   js/site.js              # 渐进增强：搜索、年份筛选、复制 BibTeX
-  images/members/         # 成员照片
-  images/publications/    # 论文预览图片
+  images/members/         # WebP 成员照片
+  images/publications/    # WebP 论文预览图片
   images/lark.png         # 原有标识抠图后配暖白背景，导航、页脚及 favicon 共用
   images/social-preview.png
 scripts/build.py          # 验证数据 + 生成静态页面
@@ -101,7 +101,7 @@ tests/test_site.py        # 内容保留、页面结构、站内链接检查
   html = {https://example.com/paper},
   code = {https://github.com/example/code},
   website = {https://example.com/project},
-  preview = {your-paper.png},
+  preview = {your-paper.webp},
   abstract = {Your abstract.}
 }
 ```
@@ -123,7 +123,7 @@ tests/test_site.py        # 内容保留、页面结构、站内链接检查
 
 ```yaml
 - name: New Member
-  image: new-member.jpg
+  image: new-member.webp
   more_info: BS University (Fall 2026)
   link: https://example.com/
 ```
