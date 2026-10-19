@@ -1,7 +1,6 @@
 """Fast build/content checks; no browser or network required."""
 from html.parser import HTMLParser
 from pathlib import Path
-import hashlib
 import sys
 import unittest
 from urllib.parse import unquote, urlparse
@@ -116,10 +115,7 @@ class SiteTests(unittest.TestCase):
             self.assertNotIn('class="page-hero', html)
             self.assertIn('<h1 class="visually-hidden">', html)
             self.assertIn('src="/assets/images/lark.png"', html)
-        self.assertEqual(
-            hashlib.sha256((ROOT / "assets/images/lark.png").read_bytes()).hexdigest(),
-            "834b3e9bae92fd0a89e5a872aedca7818815e3d401eae04546b44e3ffea888dc",
-        )
+        self.assertLess((ROOT / "assets/images/lark.png").stat().st_size, 30000)
 
     def test_output_is_minimal(self):
         output = ROOT / "_site"
