@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="visually-hidden">Publications</h1>
+<section class="publications-section container" aria-label="Publication list">
+  <div class="publication-tools" data-search-tools hidden>
+    <label class="search-field" for="publication-search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input id="publication-search" type="search" placeholder="Search titles, authors, or venues…" autocomplete="off"></label>
+    <label class="year-filter" for="publication-year">Year <select id="publication-year"><option value="all">All years</option>{% for group in publications %}<option value="{{ group.year }}">{{ group.year }}</option>{% endfor %}</select></label>
+    <p id="publication-count" aria-live="polite">{{ publication_count }} publications</p>
+  </div>
+  {% for group in publications %}
+  <section class="publication-year" data-year="{{ group.year }}" aria-labelledby="year-{{ group.year }}">
+    <h2 id="year-{{ group.year }}">{{ group.year }}</h2>
+    <div class="publication-list">
+      {% for paper in group.papers %}
+      <article id="{{ paper.id }}" class="publication" data-search="{{ paper.search }}" data-year="{{ group.year }}">
+        {% if paper.preview %}
+        {% if paper.primary_url %}<a class="publication-preview" href="{{ paper.primary_url }}" target="_blank" rel="noopener noreferrer" aria-label="Read {{ paper.title }}">{% else %}<div class="publication-preview">{% endif %}<img src="{{ paper.preview }}" alt="Figure from {{ paper.title }}" loading="lazy" width="200" height="140">{% if paper.primary_url %}</a>{% else %}</div>{% endif %}
+        {% else %}<div class="publication-preview preview-placeholder" aria-hidden="true">{{ paper.abbr }}</div>{% endif %}
+        <div class="publication-detail">
+          <h3>{% if paper.primary_url %}<a href="{{ paper.primary_url }}" target="_blank" rel="noopener noreferrer">{{ paper.title }}</a>{% else %}{{ paper.title }}{% endif %}</h3>
+          <p class="paper-authors">{% for author in paper.authors %}{% if not loop.first %}, {% endif %}{% if "Zhijiang Guo" in author %}<strong>{{ author }}</strong>{% else %}{{ author }}{% endif %}{% endfor %}</p>
+          <p class="paper-venue">{{ paper.venue }} · {{ paper.year }}</p>
+          {% if paper.annotation %}<p class="paper-annotation">{{ paper.annotation }}</p>{% endif %}
+          <div class="paper-links">{% for link in paper.links %}<a href="{{ link.url }}" target="_blank" rel="noopener noreferrer">{{ link.label }} <span aria-hidden="true">↗</span></a>{% endfor %}{% if paper.abstract %}<details><summary>Abstract</summary><p>{{ paper.abstract }}</p></details>{% endif %}<details><summary>BibTeX</summary><pre>{{ paper.bibtex }}</pre><button type="button" class="copy-bibtex" hidden>Copy BibTeX</button></details></div>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+  {% endfor %}
+  <p class="no-results" hidden>No publications match your search. Try a different title, author, or year.</p>
+  <p class="bibliography-download"><a class="text-link" href="/publications/publications.bib" download>Download bibliography <span aria-hidden="true">↓</span></a></p>
+</section>
+{% endblock %}

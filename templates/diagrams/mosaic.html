@@ -1,0 +1,10 @@
+<div class="diagram mosaic-diagram" role="img" aria-label="{{ project.diagram_alt }}">
+  <div class="diagram-heading"><span class="diagram-dot"></span> One rollout · multiple contexts</div>
+  <div class="session-row"><span class="session-type">Execute</span><div class="tokens"><i>think</i><i>act</i><i class="observation">observe</i><span>…</span></div><span class="session-credit">A₁</span></div>
+  <div class="flow-label">↓ Compact the context</div>
+  <div class="session-row"><span class="session-type">Compact</span><div class="tokens"><i class="observation">history</i><span>→</span><i>summary</i></div><span class="session-credit">A₂</span></div>
+  <div class="flow-label">↓ Continue & delegate</div>
+  <div class="session-pair"><div><span class="session-type">Subagent</span><div class="tokens"><i>act</i><i class="observation">result</i></div><span class="session-credit">A₃</span></div><div><span class="session-type">Resume</span><div class="tokens"><i>think</i><i>answer</i></div><span class="session-credit">A₄</span></div></div>
+  <div class="merge-line"><span>Session-aware credit</span></div>
+  <div class="trainer">One policy update <span>Learning from each session</span></div>
+</div>

@@ -1,0 +1,50 @@
+# Display order follows this file. Each item is an independent research feature.
+# diagram: mosaic | specagent | qk (or use image + image_alt for a new project).
+- id: mosaic
+  name: Mosaic
+  category: Agent training
+  theme: terracotta
+  title: Learning across sessions.
+  paper_title: Multi-Session Agentic Reinforcement Learning
+  summary: An agent’s work can span many sessions. Its training should, too. Mosaic learns from entire trajectories and the sessions within them, aligning agent training with context compaction and subagent forking.
+  takeaway: One rollout. Multiple sessions. Better learning signals.
+  diagram: mosaic
+  diagram_alt: Multiple execution, compaction, and subagent sessions contribute their own learning signals to one policy update.
+  project_url: https://lark-ai-lab.github.io/Mosaic/
+  links:
+    - label: Paper
+      url: https://arxiv.org/abs/2610.22174
+    - label: Code
+      url: https://github.com/LARK-AI-Lab/Mosaic
+- id: specagent
+  name: SpecAgent
+  category: Agent inference
+  theme: sage
+  title: Draft small. Verify smart.
+  paper_title: Trajectory-Level Speculation with Semantic Verification for Tool-Using Agents
+  summary: A strong model need not write every step of an agent. SpecAgent lets a small model draft a tool-using trajectory, while a large model reviews it in one pass and repairs only the first wrong step.
+  takeaway: Less expensive generation. Selective, semantic verification.
+  diagram: specagent
+  diagram_alt: A small model drafts three agent steps. A large model accepts the first two and repairs the first incorrect step.
+  project_url: https://lark-ai-lab.github.io/specagent.github.io/
+  links:
+    - label: Paper
+      url: https://arxiv.org/abs/2610.21463
+    - label: Code
+      url: https://github.com/LARK-AI-Lab/SpecAgent
+- id: qk-restore
+  name: QK-Restore
+  category: Reasoning & memory
+  theme: slate
+  title: Keep the reasoning.<br>Restore the recall.
+  paper_title: "Attention Amnesia in Hybrid LLMs: When CoT Fine-Tuning Breaks Long-Range Recall, and How to Fix It"
+  summary: Chain-of-thought fine-tuning can teach hybrid language models to reason while disrupting long-range recall. QK-Restore restores pre-training query and key projections, preserving reasoning adaptation without additional training.
+  takeaway: Restore routing. Retain adaptation. No extra training.
+  diagram: qk
+  diagram_alt: Pre-training query and key weights are restored into a fine-tuned hybrid model while value weights and reasoning adaptation are retained.
+  project_url: https://lark-ai-lab.github.io/QK-Restore/
+  links:
+    - label: Paper
+      url: https://arxiv.org/abs/2606.11052
+    - label: Code
+      url: https://github.com/LARK-AI-Lab/QK-Restore

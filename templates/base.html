@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#faf9f5">
+    <title>{{ title }} · {{ site.name }}</title>
+    <meta name="description" content="{{ description }}">
+    <link rel="canonical" href="{{ site.url }}{{ path }}">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{ title }} · {{ site.name }}">
+    <meta property="og:description" content="{{ description }}">
+    <meta property="og:url" content="{{ site.url }}{{ path }}">
+    <meta property="og:image" content="{{ site.url }}/assets/images/social-preview.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="/assets/images/lark.png" type="image/png">
+    <link rel="stylesheet" href="/assets/css/site.css?v=20261019-remove-closing">
+    <script src="/assets/js/site.js" defer></script>
+  </head>
+  <body class="page-{{ key }}">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <a class="wordmark" href="/" aria-label="LARK Lab home">
+        {% include "mark.html" %}
+        <span>LARK <span class="wordmark-light">Lab</span></span>
+      </a>
+      <nav aria-label="Main navigation">
+        {% for item in site.navigation %}
+        <a href="{{ item.path }}"{% if key == item.key %} aria-current="page"{% endif %}>{{ item.title }}</a>
+        {% endfor %}
+      </nav>
+    </header>
+    <main id="main" tabindex="-1">{% block content %}{% endblock %}</main>
+    <footer class="site-footer">
+      <div class="footer-main">
+        <a class="wordmark" href="/">{% include "mark.html" %}<span>LARK Lab</span></a>
+        <p>{{ site.full_name }}<br><span>{{ site.affiliation }}</span></p>
+      </div>
+      <div class="footer-links">
+        <a href="{{ site.github }}" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+        <a href="/members/">Our people <span aria-hidden="true">→</span></a>
+        <span class="copyright">© {{ year }} LARK Lab</span>
+      </div>
+    </footer>
+  </body>
+</html>
