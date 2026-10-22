@@ -1,0 +1,16 @@
+- slug: tool-schema-bias
+  title: Tool Schema Bias for Agentic Environments
+  date: "2026-10-16"
+  author: Yinhong Liu
+  category: Agentic AI
+  summary: One action space, many tool schemas. How interface representations change LLM agent performance—and what it takes to measure and mitigate schema bias.
+  source: tool-schema-bias
+  cover: assets/blog_action_space.png
+  cover_alt: Different tool schemas map to the same executable action space.
+  languages:
+    - code: en
+      label: English
+      file: blog_en.md
+    - code: zh-CN
+      label: 中文
+      file: blog.md
