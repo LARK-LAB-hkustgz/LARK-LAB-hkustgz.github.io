@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="blog-section container" aria-labelledby="blog-title">
+  <header class="blog-heading">
+    <p class="eyebrow">From the lab</p>
+    <h1 id="blog-title">Blog</h1>
+    <p>Ideas, experiments, and perspectives on language agents, reasoning, and knowledge.</p>
+  </header>
+  <div class="blog-list">
+    {% for post in blogs %}
+    <article class="blog-card" aria-labelledby="{{ post.slug }}-title">
+      {% if post.cover %}
+      <a class="blog-cover" href="{{ post.path }}" aria-label="Read {{ post.title }}">
+        <img src="{{ post.cover.url }}" alt="{{ post.cover_alt }}" width="{{ post.cover.width }}" height="{{ post.cover.height }}" loading="{{ 'eager' if loop.first else 'lazy' }}" decoding="async" fetchpriority="{{ 'high' if loop.first else 'low' }}">
+      </a>
+      {% endif %}
+      <div class="blog-card-copy">
+        <p class="eyebrow">{{ post.category }}</p>
+        <p class="blog-meta"><time datetime="{{ post.date }}">{{ post.date_label }}</time> <span aria-hidden="true">·</span> {{ post.author }}</p>
+        <h2 id="{{ post.slug }}-title"><a href="{{ post.path }}">{{ post.title }}</a></h2>
+        <p class="blog-summary">{{ post.summary }}</p>
+        <a class="button-link" href="{{ post.path }}">Read article <span aria-hidden="true">→</span></a>
+      </div>
+    </article>
+    {% else %}
+    <p>New articles coming soon.</p>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

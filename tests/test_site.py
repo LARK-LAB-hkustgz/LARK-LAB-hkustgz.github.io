@@ -3,6 +3,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 import sys
 import unittest
+from unittest.mock import patch
 from urllib.parse import unquote, urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -25,7 +26,7 @@ class PageParser(HTMLParser):
             self.ids.append(attrs["id"])
         if tag == "h1":
             self.headings += 1
-        if tag == "a" and "aria-current" in attrs:
+        if tag == "a" and attrs.get("aria-current") == "page":
             self.current.append(attrs["href"])
         if tag == "img":
             self.images.append(attrs)
@@ -64,14 +65,18 @@ class SiteTests(unittest.TestCase):
         self.assertEqual(len(expected), sum(len(g["papers"]) for g in groups))
 
     def test_primary_pages_metadata_and_navigation(self):
-        for filename, current in (("index.html", "/"), ("publications/index.html", "/publications/"), ("members/index.html", "/members/")):
+        pages = [("index.html", "/"), ("blog/index.html", "/blog/"), ("publications/index.html", "/publications/"), ("members/index.html", "/members/")]
+        pages.extend((variant["path"].lstrip("/") + "index.html", "/blog/")
+                     for post in build.load_blogs() for variant in post["languages"])
+        for filename, current in pages:
             html = (ROOT / "_site" / filename).read_text()
             parser = PageParser()
             parser.feed(html)
             self.assertEqual(1, parser.headings, filename)
             self.assertEqual([current], parser.current, filename)
             self.assertEqual(len(parser.ids), len(set(parser.ids)), filename)
-            self.assertIn('https://lark-lab-hkustgz.github.io' + current, html)
+            canonical_path = "/" if filename == "index.html" else "/" + filename.removesuffix("index.html")
+            self.assertIn('href="https://lark-lab-hkustgz.github.io' + canonical_path + '"', html)
             self.assertNotIn("Powered by", html)
             self.assertNotIn("al-folio", html)
             for image in parser.images:
@@ -110,12 +115,82 @@ class SiteTests(unittest.TestCase):
         self.assertNotIn('class="research-closing', research)
         self.assertNotIn('class="hero-description"', research)
         self.assertIn('class="lab-name"', research)
+        self.assertIn(build.read_yaml("site.yml")["description"], research)
+        self.assertNotIn('<p class="affiliation">', research)
         for filename in ("publications/index.html", "members/index.html"):
             html = (ROOT / "_site" / filename).read_text()
             self.assertNotIn('class="page-hero', html)
             self.assertIn('<h1 class="visually-hidden">', html)
-            self.assertIn('src="/assets/images/lark.png"', html)
-        self.assertLess((ROOT / "assets/images/lark.png").stat().st_size, 30000)
+            self.assertIn('src="/assets/images/lark.png?v=', html)
+        self.assertEqual({"width": 1024, "height": 1024}, build.image_dimensions("/assets/images/lark.png"))
+
+    def test_original_images_and_loading_policy(self):
+        for folder, suffix in (("members", ".jpg"), ("publications", ".png")):
+            self.assertFalse(list((ROOT / "assets/images" / folder).glob("*.webp")))
+            for image in (ROOT / "assets/images" / folder).glob("*" + suffix):
+                generated = ROOT / "_site" / image.relative_to(ROOT)
+                self.assertEqual(image.read_bytes(), generated.read_bytes(), image.name)
+        for filename in ("members/index.html", "publications/index.html"):
+            parser = PageParser()
+            parser.feed((ROOT / "_site" / filename).read_text())
+            content_images = [img for img in parser.images if img.get("class") != "lab-mark"]
+            self.assertEqual(1, sum(img.get("fetchpriority") == "high" for img in content_images))
+            for image in content_images:
+                url = urlparse(image["src"])
+                self.assertIn("v=", url.query)
+                self.assertEqual("async", image["decoding"])
+                dimensions = build.image_dimensions(url.path)
+                self.assertEqual(dimensions["width"], int(image["width"]))
+                self.assertEqual(dimensions["height"], int(image["height"]))
+                if image.get("fetchpriority") != "high":
+                    self.assertEqual("lazy", image["loading"])
+        self.assertTrue((ROOT / "_site/sw.js").is_file())
+        self.assertEqual((ROOT / "templates/image-worker.js").read_bytes(), (ROOT / "_site/sw.js").read_bytes())
+
+    def test_blog_posts_languages_and_assets(self):
+        posts = build.load_blogs()
+        listing = (ROOT / "_site/blog/index.html").read_text()
+        self.assertEqual(len(posts), listing.count('class="blog-card"'))
+        self.assertEqual(sorted((p["date"] for p in posts), reverse=True), [p["date"] for p in posts])
+        sitemap = (ROOT / "_site/sitemap.xml").read_text()
+        for post in posts:
+            self.assertIn(post["title"], listing)
+            for variant in post["languages"]:
+                html = (ROOT / "_site" / variant["path"].lstrip("/") / "index.html").read_text()
+                self.assertIn(f'<html lang="{variant["code"]}">', html)
+                self.assertIn('property="og:type" content="article"', html)
+                self.assertIn(post["author"], html)
+                self.assertNotIn("Date: Oct", html)
+                self.assertIn(post["path"], listing)
+                self.assertIn(variant["path"], sitemap)
+                self.assertIn('class="blog-body"', html)
+                for other in post["languages"]:
+                    self.assertIn(f'href="{other["path"]}"', html)
+        english = (ROOT / "_site/blog/tool-schema-bias/index.html").read_text()
+        self.assertEqual(3, english.count("<figure>"))
+        self.assertEqual(3, english.count("<figcaption>"))
+        self.assertIn("language-python", english)
+        self.assertIn("language-bibtex", english)
+        self.assertIn("https://github.com/williamLyh/ToolSchemaSpace", english)
+        chinese = (ROOT / "_site/blog/tool-schema-bias/zh-cn/index.html").read_text()
+        self.assertIn("同一个动作，不同的说法", chinese)
+
+    def test_multiple_blog_posts_and_validation(self):
+        data = build.read_yaml("blog.yml")
+        second = dict(data[0], slug="another-post", title="Another post", date="2026-10-17")
+        with patch.object(build, "read_yaml", return_value=[data[0], second]):
+            posts = build.load_blogs()
+            self.assertEqual(["another-post", data[0]["slug"]], [p["slug"] for p in posts])
+            self.assertEqual("/blog/another-post/", posts[0]["path"])
+            self.assertIn("/blog/another-post/assets/blog_action_space.png", build.render_blog(posts[0], posts[0]["languages"][0]))
+        for changes in ({"slug": "../escape"}, {"source": "../../"}, {"cover": "../site.yml"},
+                        {"date": "invalid"}, {"languages": []}):
+            with self.subTest(changes=changes), patch.object(build, "read_yaml", return_value=[dict(data[0], **changes)]):
+                with self.assertRaises(ValueError):
+                    build.load_blogs()
+        with patch.object(build, "read_yaml", return_value=[data[0], dict(data[0])]):
+            with self.assertRaises(ValueError):
+                build.load_blogs()
 
     def test_output_is_minimal(self):
         output = ROOT / "_site"

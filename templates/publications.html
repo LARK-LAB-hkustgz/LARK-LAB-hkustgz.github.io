@@ -15,7 +15,7 @@
       {% for paper in group.papers %}
       <article id="{{ paper.id }}" class="publication" data-search="{{ paper.search }}" data-year="{{ group.year }}">
         {% if paper.preview %}
-        {% if paper.primary_url %}<a class="publication-preview" href="{{ paper.primary_url }}" target="_blank" rel="noopener noreferrer" aria-label="Read {{ paper.title }}">{% else %}<div class="publication-preview">{% endif %}<img src="{{ paper.preview }}" alt="Figure from {{ paper.title }}" loading="{{ 'eager' if first_year and loop.index <= 3 else 'lazy' }}" decoding="async" width="200" height="140">{% if paper.primary_url %}</a>{% else %}</div>{% endif %}
+        {% if paper.primary_url %}<a class="publication-preview" href="{{ paper.primary_url }}" target="_blank" rel="noopener noreferrer" aria-label="Read {{ paper.title }}">{% else %}<div class="publication-preview">{% endif %}<img src="{{ paper.preview | image_url }}" alt="Figure from {{ paper.title }}" loading="{{ 'eager' if first_year and loop.first else 'lazy' }}" decoding="async" fetchpriority="{{ 'high' if first_year and loop.first else 'low' }}" width="{{ paper.dimensions.width }}" height="{{ paper.dimensions.height }}">{% if paper.primary_url %}</a>{% else %}</div>{% endif %}
         {% else %}<div class="publication-preview preview-placeholder" aria-hidden="true">{{ paper.abbr }}</div>{% endif %}
         <div class="publication-detail">
           <h3>{% if paper.primary_url %}<a href="{{ paper.primary_url }}" target="_blank" rel="noopener noreferrer">{{ paper.title }}</a>{% else %}{{ paper.title }}{% endif %}</h3>

@@ -10,7 +10,7 @@
       {% for person in group.people %}
       <article class="member-card">
         {% if person.link %}<a class="member-photo" href="{{ person.link }}" target="_blank" rel="noopener noreferrer" aria-label="{{ person.name }} — personal website">{% else %}<div class="member-photo">{% endif %}
-          {% if person.image %}<img src="{{ person.image }}" alt="{{ person.name }}" width="240" height="240" loading="{{ 'eager' if first_group and loop.first else 'lazy' }}" decoding="async"{% if first_group and loop.first %} fetchpriority="high"{% endif %}>{% else %}<span class="member-initials" aria-label="Portrait not yet available">{{ person.initials }}</span>{% endif %}
+          {% if person.image %}<img src="{{ person.image | image_url }}" alt="{{ person.name }}" width="{{ person.dimensions.width }}" height="{{ person.dimensions.height }}" loading="{{ 'eager' if first_group and loop.first else 'lazy' }}" decoding="async" fetchpriority="{{ 'high' if first_group and loop.first else 'low' }}">{% else %}<span class="member-initials" aria-label="Portrait not yet available">{{ person.initials }}</span>{% endif %}
         {% if person.link %}</a>{% else %}</div>{% endif %}
         <h3>{% if person.link %}<a href="{{ person.link }}" target="_blank" rel="noopener noreferrer">{{ person.name }} <span aria-hidden="true">↗</span></a>{% else %}{{ person.name }}{% endif %}</h3>
         <p>{{ person.more_info }}</p>

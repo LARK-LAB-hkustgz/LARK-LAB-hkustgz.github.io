@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<article class="blog-post container">
+  <header class="blog-post-header">
+    <a class="secondary-link" href="/blog/"><span aria-hidden="true">←</span> All articles</a>
+    <p class="eyebrow">{{ post.category }}</p>
+    <h1>{{ post.title }}</h1>
+    <p class="blog-meta"><time datetime="{{ post.date }}">{{ post.date_label }}</time> <span aria-hidden="true">·</span> {{ post.author }}</p>
+    {% if post.languages | length > 1 %}
+    <nav class="blog-languages" aria-label="Article language">
+      {% for variant in post.languages %}
+      <a href="{{ variant.path }}" lang="{{ variant.code }}" hreflang="{{ variant.code }}"{% if variant.code == language %} aria-current="true"{% endif %}>{{ variant.label }}</a>
+      {% endfor %}
+    </nav>
+    {% endif %}
+  </header>
+  <div class="blog-body">{{ body | safe }}</div>
+  <footer class="blog-post-footer">
+    <a class="button-link" href="/blog/"><span aria-hidden="true">←</span> Back to Blog</a>
+  </footer>
+</article>
+{% endblock %}

@@ -1,6 +1,12 @@
 /* The site is fully readable without JS. These are optional enhancements. */
 (() => {
   "use strict";
+  // No bulk prefetch: only cache images the reader actually requests.
+  if ("serviceWorker" in navigator && window.isSecureContext) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("/sw.js", {updateViaCache: "none"}).catch(() => {});
+    }, {once: true});
+  }
   const search = document.querySelector("#publication-search");
   const year = document.querySelector("#publication-year");
   if (search && year) {

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="{{ language | default('en') }}">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,15 +7,15 @@
     <title>{{ title }} · {{ site.name }}</title>
     <meta name="description" content="{{ description }}">
     <link rel="canonical" href="{{ site.url }}{{ path }}">
-    <meta property="og:type" content="website">
+    <meta property="og:type" content="{{ og_type | default('website') }}">
     <meta property="og:title" content="{{ title }} · {{ site.name }}">
     <meta property="og:description" content="{{ description }}">
     <meta property="og:url" content="{{ site.url }}{{ path }}">
     <meta property="og:image" content="{{ site.url }}/assets/images/social-preview.png">
     <meta name="twitter:card" content="summary_large_image">
-    <link rel="icon" href="/assets/images/lark.png" type="image/png">
-    <link rel="stylesheet" href="/assets/css/site.css?v=20261019-remove-closing">
-    <script src="/assets/js/site.js" defer></script>
+    <link rel="icon" href="{{ '/assets/images/lark.png' | image_url }}" type="image/png">
+    <link rel="stylesheet" href="/assets/css/site.css?v=20261020-original-images">
+    <script src="/assets/js/site.js?v=20261020-original-images" defer></script>
   </head>
   <body class="page-{{ key }}">
     <a class="skip-link" href="#main">Skip to content</a>
